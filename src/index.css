@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-leaf: #d4af37;
+  --color-gold-shimmer: #c9a84c;
+  --color-deep-black: #050505;
+  --color-charcoal-gray: #121212;
+  --color-cream-white: #faf8f5;
+  --color-ivory-light: #f0ebe3;
+  --color-rose-blush: #d4a0a0;
+  --color-rose-dusty: #c9938f;
+  --color-rose-dark: #1f1a1a;
+  --color-dark-surface: #0f0f0f;
+  
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-serif-display: 'DM Serif Display', serif;
+  --font-nunito: 'Nunito Sans', sans-serif;
+}
+
+/* Base Styles & Custom Animations */
+html, body {
+  background-color: #050505;
+  color: #faf8f5;
+  font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9938f;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Film Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Custom Cursor */
+.custom-cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #d4af37;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1000;
+  transition: width 0.3s, height 0.3s;
+}
+
+.custom-cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid #d4af37;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 999;
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+.cursor-hover .custom-cursor-dot {
+  width: 12px;
+  height: 12px;
+  background-color: #faf8f5;
+}
+
+.cursor-hover .custom-cursor-ring {
+  width: 48px;
+  height: 48px;
+  border-color: #c9938f;
+}
+
+/* Scroll progress */
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 3px;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #d4af37, #c9938f);
+  width: 0%;
+}
+
+/* Button Gold Shimmer Animation */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: none;
+  pointer-events: none;
+}
+
+.btn-shimmer:hover::after {
+  left: 150%;
+  transition: left 0.8s ease-in-out;
+}
+
+/* Marquee / Infinite Ticker Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Rotating Ring Animation */
+@keyframes rotateRing {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.animate-rotating-ring {
+  animation: rotateRing 15s linear infinite;
+}
+
+/* Text Shimmer/Gold Mask */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f0ebe3 0%, #d4af37 50%, #c9938f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom utilities for 3D Services deck */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.card-deck-3d {
+  transform-style: preserve-3d;
+}
