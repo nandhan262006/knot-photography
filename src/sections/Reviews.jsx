@@ -1,6 +1,15 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 
+const GoogleIcon = () => (
+  <svg viewBox="0 0 48 48" className="w-5 h-5">
+    <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z" />
+    <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z" />
+    <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z" />
+    <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z" />
+  </svg>
+);
+
 export default function Reviews() {
   const googleReviews = [
     {
@@ -48,58 +57,69 @@ export default function Reviews() {
   return (
     <section 
       id="reviews" 
-      className="relative w-full py-20 bg-rose-dark/45 overflow-hidden border-b border-gold-leaf/5"
+      className="relative w-full py-16 md:py-20 bg-[#0c0c0c] overflow-hidden border-b border-white/5"
     >
-      {/* Background Soft Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-rose-blush/5 blur-3xl pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full text-center relative z-10 mb-12">
-        <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-          CLIENT KUDOS
-        </span>
-        <h2 className="font-cormorant text-4xl md:text-5xl text-cream-white font-light tracking-wide">
-          109 Google Reviews · 4.8★ Rating
+        <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 mb-6">
+          <GoogleIcon />
+          <span className="font-nunito text-[11px] uppercase tracking-widest text-[#4285F4] font-semibold">
+            Google Reviews
+          </span>
+        </div>
+        <h2 className="text-5xl md:text-6xl font-bold text-[#4285F4] tracking-tight font-serif-display">
+          4.8
         </h2>
-        <div className="w-12 h-[1px] bg-gold-leaf mx-auto mt-4" />
+        <div className="flex items-center justify-center gap-1 mt-2">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={20} className="fill-[#FBBC05] text-[#FBBC05]" />
+          ))}
+        </div>
+        <p className="font-nunito text-sm text-white/50 tracking-wider mt-3">
+          Based on <span className="text-white/80 font-semibold">1K+ reviews</span>
+        </p>
       </div>
 
       {/* Ticker Row */}
       <div className="relative w-full overflow-hidden py-4 flex select-none">
-        {/* Subtle gradients on edges for fade-out styling */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#0c0c0c] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-[#0c0c0c] to-transparent z-10 pointer-events-none" />
 
-        {/* Double-listed list for infinite scrolling */}
         <div className="animate-marquee gap-6">
           {[...googleReviews, ...googleReviews].map((review, index) => (
             <div
               key={`${review.id}-${index}`}
-              className="bg-[#121212] border border-gold-leaf/5 hover:border-gold-leaf/20 w-[300px] md:w-[380px] p-8 flex flex-col justify-between transition-colors duration-300 pointer-events-auto"
+              className="bg-white/[0.04] border border-white/[0.06] hover:border-white/[0.12] w-[320px] md:w-[400px] p-6 md:p-7 flex flex-col justify-between transition-all duration-300 pointer-events-auto rounded-lg"
             >
-              
-              {/* Rating stars */}
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} size={14} className="fill-gold-leaf text-gold-leaf" />
-                ))}
+              <div>
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star key={i} size={14} className="fill-[#FBBC05] text-[#FBBC05]" />
+                  ))}
+                </div>
+
+                <p className="font-nunito text-[13px] text-white/70 leading-relaxed mb-5 flex-grow">
+                  &ldquo;{review.text}&rdquo;
+                </p>
               </div>
 
-              {/* Quote Text */}
-              <p className="font-cormorant text-cream-white/80 text-base md:text-lg italic leading-relaxed tracking-wider mb-6 flex-grow">
-                "{review.text}"
-              </p>
-
-              {/* Reviewer Details */}
-              <div className="flex justify-between items-center border-t border-white/5 pt-4">
-                <div>
-                  <h4 className="font-nunito text-xs uppercase tracking-widest text-cream-white font-semibold">
-                    {review.name}
-                  </h4>
-                  <span className="font-nunito text-[10px] text-rose-dusty/60 tracking-wider">
-                    {review.role}
-                  </span>
+              <div className="flex justify-between items-center border-t border-white/[0.06] pt-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-[#4285F4]/20 flex items-center justify-center text-[#4285F4] font-bold text-xs font-nunito">
+                    {review.name.charAt(0)}
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-nunito text-xs text-white/80 font-semibold">
+                      {review.name}
+                    </h4>
+                    <div className="flex items-center gap-1">
+                      <GoogleIcon />
+                      <span className="font-nunito text-[10px] text-[#4285F4]/60">
+                        {review.role}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <span className="font-nunito text-[9px] text-cream-white/30 uppercase tracking-widest">
+                <span className="font-nunito text-[10px] text-white/30">
                   {review.date}
                 </span>
               </div>

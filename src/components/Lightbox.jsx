@@ -64,11 +64,12 @@ export default function Lightbox({ isOpen, images, activeIndex, onClose, setActi
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center select-none"
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
         onClick={onClose}
       >
         {/* Top Control Bar */}
         <div 
-          className="absolute top-0 left-0 w-full p-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent z-10"
+          className="absolute top-0 left-0 w-full p-4 md:p-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent z-10"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="font-cormorant text-cream-white/70 text-sm tracking-widest">
@@ -111,7 +112,7 @@ export default function Lightbox({ isOpen, images, activeIndex, onClose, setActi
 
         {/* Main Image View */}
         <div
-          className="w-full max-w-5xl max-h-[80vh] px-4 flex flex-col items-center justify-center"
+          className="w-full max-w-5xl max-h-[70vh] md:max-h-[80vh] px-4 flex flex-col items-center justify-center"
           onClick={(e) => e.stopPropagation()}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
@@ -125,7 +126,7 @@ export default function Lightbox({ isOpen, images, activeIndex, onClose, setActi
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="max-w-full max-h-[75vh] object-contain shadow-2xl border border-white/5"
+            className="max-w-full max-h-[60vh] md:max-h-[75vh] object-contain shadow-2xl border border-white/5"
           />
 
           <div className="mt-4 text-center">

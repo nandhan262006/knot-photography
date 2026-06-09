@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Star, Award, Heart } from 'lucide-react';
+import { Star, Award, Heart, Camera } from 'lucide-react';
 
 export default function About() {
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
@@ -36,7 +36,7 @@ export default function About() {
       icon: <Star className="w-5 h-5 text-gold-leaf" />
     },
     {
-      value: "109",
+      value: "1K+",
       label: "Google Reviews",
       desc: "5-star customer trust",
       icon: <Award className="w-5 h-5 text-gold-leaf" />
@@ -55,21 +55,42 @@ export default function About() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-screen py-24 md:py-32 bg-[#0c0c0c] flex items-center overflow-hidden border-t border-b border-gold-leaf/5"
+      className="relative w-full min-h-screen py-16 md:py-24 lg:py-32 bg-[#0c0c0c] flex items-center overflow-hidden border-t border-b border-gold-leaf/5"
     >
       {/* Subtle background noise grid or watermark */}
       <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
         
-        {/* Left Side: Large vertical text "EST. IN NELLORE" rotated 90° */}
+        {/* Left Side: Main Photographer Portrait */}
         <div className="hidden md:flex md:col-span-3 lg:col-span-4 justify-center items-center h-full relative">
+          <div className="relative w-full max-w-xs aspect-[3/4] overflow-hidden border border-gold-leaf/10 group bg-[#1a1a1a] flex items-center justify-center">
+            <img
+              src="/images/photographer.png"
+              alt="THE KNOT Photographer"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-cream-white/30 font-nunito text-xs uppercase tracking-[0.2em]">
+              <Camera size={32} className="mb-2 text-gold-leaf/30" />
+              <span className="text-[10px]">Photographer Photo</span>
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-4 left-4 right-4 z-10">
+              <div className="font-nunito text-[10px] uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-1">
+                THE KNOT
+              </div>
+              <div className="font-cormorant text-lg text-cream-white font-light italic">
+                Lead Photographer
+              </div>
+            </div>
+          </div>
           <motion.div
             style={{ 
               transform: `rotate(-90deg) translate3d(${parallax.x * -0.5}px, ${parallax.y * -0.5}px, 0)`,
               transition: 'transform 0.2s ease-out'
             }}
-            className="text-stroke-gold font-serif-display text-5xl lg:text-7xl uppercase tracking-[0.25em] select-none whitespace-nowrap origin-center"
+            className="absolute text-stroke-gold font-serif-display text-5xl lg:text-7xl uppercase tracking-[0.25em] select-none whitespace-nowrap origin-center pointer-events-none opacity-30"
           >
             EST. IN NELLORE
           </motion.div>
@@ -144,7 +165,7 @@ export default function About() {
 
           {/* Small Mobile Subheading */}
           <div className="mt-12 block md:hidden text-center">
-            <span className="text-stroke-gold font-serif-display text-4xl uppercase tracking-widest select-none">
+            <span className="text-stroke-gold font-serif-display text-2xl sm:text-4xl uppercase tracking-widest select-none">
               EST. IN NELLORE
             </span>
           </div>

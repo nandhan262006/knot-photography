@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Camera } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,6 +21,7 @@ export default function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
+    { name: 'Studio 3D', href: '#studio3d' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'Contact', href: '#contact' },
@@ -31,16 +32,18 @@ export default function Navbar() {
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
         isScrolled 
           ? 'bg-[#050505]/85 backdrop-blur-md border-b border-gold-leaf/10 py-4 shadow-lg' 
-          : 'bg-transparent py-6'
+          : 'bg-transparent py-4 md:py-6'
       }`}
+      style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Brand Logo */}
-        <a href="#home" className="flex items-center gap-2 group clickable">
-          <Camera className="w-5 h-5 text-gold-leaf group-hover:rotate-12 transition-transform duration-300" />
-          <span className="font-cormorant text-2xl tracking-widest text-cream-white font-light group-hover:text-gold-leaf transition-colors duration-300">
-            THE KNOT
-          </span>
+        <a href="#home" className="flex items-center group clickable">
+          <img
+            src="/images/navlog.png"
+            alt="THE KNOT"
+            className="h-28 md:h-36 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+          />
         </a>
 
         {/* Desktop Links */}
@@ -81,7 +84,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-[#050505] z-50 flex flex-col items-center justify-center space-y-8 transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 bg-[#050505] z-[100] flex flex-col items-center justify-center space-y-6 md:space-y-8 overflow-y-auto transition-all duration-500 md:hidden ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -92,16 +95,18 @@ export default function Navbar() {
           <X size={28} />
         </button>
 
-        <span className="font-cormorant text-3xl tracking-widest text-gold-leaf font-light mb-6">
-          THE KNOT
-        </span>
+        <img
+          src="/images/navlog.png"
+          alt="THE KNOT"
+          className="h-36 w-auto object-contain mb-6 opacity-90"
+        />
 
         {navLinks.map((link) => (
           <a
             key={link.name}
             href={link.href}
             onClick={() => setIsOpen(false)}
-            className="font-cormorant text-2xl tracking-widest text-cream-white hover:text-gold-leaf transition-colors duration-300 clickable"
+            className="font-cormorant text-xl md:text-2xl tracking-widest text-cream-white hover:text-gold-leaf transition-colors duration-300 clickable"
           >
             {link.name}
           </a>
@@ -112,7 +117,7 @@ export default function Navbar() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setIsOpen(false)}
-          className="font-nunito text-xs uppercase tracking-widest border border-gold-leaf px-8 py-3 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 mt-6 clickable"
+          className="font-nunito text-xs uppercase tracking-widest border border-gold-leaf px-6 md:px-8 py-3 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 mt-6 clickable"
         >
           Book Your Date
         </a>

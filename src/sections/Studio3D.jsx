@@ -1,26 +1,45 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function Services() {
+export default function Studio3D() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  const services = [
-    { id: 0, title: "Bridal Photography", image: "/images/bridalpackage.jpg" },
-    { id: 1, title: "Candid Wedding Shoots", image: "/images/candid.png" },
-    { id: 2, title: "Pre-Wedding Shoots", image: "/images/prewedding.png" },
-    { id: 3, title: "Event Coverage", image: "/images/hero_bg.png" },
-    { id: 4, title: "Album & Reels", image: "/images/knot.png" }
+  const cards = [
+    {
+      id: 0,
+      title: "3D Themed Backdrops",
+      image: "/images/bridal.png",
+    },
+    {
+      id: 1,
+      title: "Premium Baby Props",
+      image: "/images/candid.png",
+    },
+    {
+      id: 2,
+      title: "Cake Smash Sessions",
+      image: "/images/knot.png",
+    },
+    {
+      id: 3,
+      title: "Newborn Photography",
+      image: "/images/prewedding.png",
+    },
+    {
+      id: 4,
+      title: "Birthday Party Coverage",
+      image: "/images/hero_bg.png",
+    }
   ];
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % services.length);
+    setActiveIndex((prev) => (prev + 1) % cards.length);
   };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + services.length) % services.length);
+    setActiveIndex((prev) => (prev - 1 + cards.length) % cards.length);
   };
 
   const handleTouchStart = (e) => {
@@ -42,70 +61,65 @@ export default function Services() {
     } else if (isRightSwipe) {
       handlePrev();
     }
-    
-    // Reset values
+
     setTouchStart(0);
     setTouchEnd(0);
   };
 
   return (
-    <section 
-      id="services" 
-      className="relative w-full py-16 md:py-24 lg:py-32 bg-[#050505] overflow-hidden flex flex-col items-center justify-center border-b border-gold-leaf/5"
+    <section
+      id="studio3d"
+      className="relative w-full py-16 md:py-24 lg:py-32 bg-[#0c0c0c] overflow-hidden flex flex-col items-center justify-center border-b border-gold-leaf/5"
     >
-      {/* Background Soft Blobs */}
-      <div className="absolute top-[10%] right-[5%] w-80 h-80 rounded-full bg-gold-leaf/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[10%] left-[5%] w-80 h-80 rounded-full bg-rose-blush/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-[15%] left-[5%] w-80 h-80 rounded-full bg-rose-blush/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-[15%] right-[5%] w-80 h-80 rounded-full bg-gold-leaf/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full text-center relative z-10">
-        
-        {/* Section Header */}
+
         <div className="mb-20">
-          <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-            OUR OFFERINGS
+          <span className="font-nunito text-xs uppercase tracking-[0.3em] text-rose-blush font-semibold mb-3 block">
+            KID&apos;S STUDIO 3D NELLORE
           </span>
           <h2 className="font-cormorant text-4xl md:text-5xl text-cream-white font-light tracking-wide">
-            Bespoke Services
+            Andhra&apos;s Largest Baby Studio
           </h2>
-          <div className="w-12 h-[1px] bg-gold-leaf mx-auto mt-4" />
+          <p className="font-nunito text-xs md:text-sm text-cream-white/50 tracking-wider mt-4 max-w-xl mx-auto">
+            📸 3D Themes | Premium Props | Memorable Moments
+          </p>
+          <div className="w-12 h-[1px] bg-rose-blush mx-auto mt-4" />
         </div>
 
-        {/* 3D Carousel Container */}
         <div className="relative w-full flex flex-col items-center justify-center">
-          
-          {/* Main 3D Card Stage */}
-          <div 
+
+          <div
             className="perspective-container relative w-full max-w-[420px] h-[400px] md:h-[480px] flex items-center justify-center"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             <div className="card-deck-3d relative w-full h-full flex items-center justify-center">
-              
-              {services.map((service, index) => {
-                // Calculate angular distance and 3D offset
-                const diff = (index - activeIndex + services.length) % services.length;
-                
-                // Represent offset as -2, -1, 0, 1, 2 for layout centering
+
+              {cards.map((card, index) => {
+                const diff = (index - activeIndex + cards.length) % cards.length;
+
                 let offset = diff;
-                if (offset > services.length / 2) {
-                  offset -= services.length;
+                if (offset > cards.length / 2) {
+                  offset -= cards.length;
                 }
 
                 const isActive = offset === 0;
                 const absOffset = Math.abs(offset);
-                
-                // Determine 3D values
-                const rotateY = offset * 45; // rotation angle
-                const translateZ = isActive ? 100 : -100 - (absOffset * 50); // distance depth
+
+                const rotateY = offset * 45;
+                const translateZ = isActive ? 100 : -100 - (absOffset * 70);
                 const cardWidth = window.innerWidth < 640 ? 280 : window.innerWidth < 768 ? 300 : 340;
-                const translateX = offset * (cardWidth * 0.5); // horizontal spread relative to card width
-                const opacity = isActive ? 1 : absOffset === 1 ? 0.6 : 0.15;
-                const scale = isActive ? 1.05 : 0.88;
+                const translateX = offset * (cardWidth * 0.5);
+                const opacity = isActive ? 1 : absOffset === 1 ? 0.6 : 0.1;
+                const scale = isActive ? 1.05 : 0.85;
 
                 return (
                   <div
-                    key={service.id}
+                    key={card.id}
                     className={`absolute w-[280px] sm:w-[300px] md:w-[340px] h-[380px] md:h-[430px] rounded-sm overflow-hidden transition-all duration-700 ease-out border ${
                       isActive ? 'border-gold-leaf/40 shadow-2xl' : 'border-gold-leaf/10 shadow-2xl'
                     }`}
@@ -120,8 +134,8 @@ export default function Services() {
                   >
                     <div className="absolute inset-0 w-full h-full">
                       <img
-                        src={service.image}
-                        alt={service.title}
+                        src={card.image}
+                        alt={card.title}
                         className={`w-full h-full object-cover transition-transform duration-700 ${
                           isActive ? 'opacity-100 scale-105' : 'opacity-40 group-hover:scale-105'
                         }`}
@@ -137,7 +151,7 @@ export default function Services() {
                       <h3 className={`font-cormorant text-2xl tracking-widest font-light transition-all duration-500 ${
                         isActive ? 'text-gold-leaf' : 'text-cream-white'
                       }`}>
-                        {service.title}
+                        {card.title}
                       </h3>
                     </div>
                   </div>
@@ -147,18 +161,17 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Carousel Navigation Buttons */}
           <div className="flex items-center space-x-6 mt-8 z-20">
             <button
               onClick={handlePrev}
               className="p-3 border border-gold-leaf/30 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 rounded-none focus:outline-none clickable"
-              aria-label="Previous service"
+              aria-label="Previous card"
             >
               <ChevronLeft size={18} />
             </button>
-            
+
             <div className="flex items-center space-x-2">
-              {services.map((_, idx) => (
+              {cards.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveIndex(idx)}
@@ -173,7 +186,7 @@ export default function Services() {
             <button
               onClick={handleNext}
               className="p-3 border border-gold-leaf/30 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 rounded-none focus:outline-none clickable"
-              aria-label="Next service"
+              aria-label="Next card"
             >
               <ChevronRight size={18} />
             </button>

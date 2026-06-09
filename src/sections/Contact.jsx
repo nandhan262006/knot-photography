@@ -45,12 +45,12 @@ export default function Contact() {
   return (
     <section 
       id="contact" 
-      className="relative w-full py-24 md:py-32 bg-[#050505] overflow-hidden"
+      className="relative w-full py-16 md:py-24 lg:py-32 bg-[#050505] overflow-hidden"
     >
       {/* Background radial highlight */}
       <div className="absolute top-1/2 left-[80%] -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] rounded-full bg-gold-leaf/5 blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center relative z-10">
         
         {/* Left Side: Contact Information */}
         <div className="lg:col-span-7 flex flex-col justify-center">
@@ -85,7 +85,7 @@ export default function Contact() {
                   <span className="font-nunito text-[9px] uppercase tracking-widest text-rose-dusty/60">
                     {detail.label}
                   </span>
-                  <p className="font-cormorant text-lg md:text-xl text-cream-white tracking-widest font-light mt-0.5 group-hover:text-gold-leaf transition-colors">
+                  <p className="font-cormorant text-lg md:text-xl text-cream-white tracking-wider md:tracking-widest font-light mt-0.5 group-hover:text-gold-leaf transition-colors">
                     {detail.value}
                   </p>
                 </div>
@@ -99,10 +99,10 @@ export default function Contact() {
               href="https://wa.me/918500563003"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-shimmer inline-flex items-center gap-3 font-nunito text-xs uppercase tracking-[0.25em] bg-gold-leaf text-black px-10 py-4.5 font-bold transition-all duration-300 shadow-xl shadow-gold-leaf/10 hover:shadow-gold-leaf/25 clickable"
+              className="btn-shimmer inline-flex items-center gap-3 font-nunito text-xs uppercase tracking-[0.25em] bg-gold-leaf text-black px-6 md:px-10 py-4.5 font-bold transition-all duration-300 shadow-xl shadow-gold-leaf/10 hover:shadow-gold-leaf/25 clickable whitespace-nowrap"
             >
-              <MessageCircle size={18} className="fill-current" />
-              Book Your Date on WhatsApp
+              <MessageCircle size={18} className="fill-current shrink-0" />
+              <span className="hidden sm:inline">Book Your Date on WhatsApp</span><span className="sm:hidden">Book Now</span>
             </a>
           </div>
 

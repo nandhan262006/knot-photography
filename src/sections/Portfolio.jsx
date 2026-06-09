@@ -74,7 +74,7 @@ export default function Portfolio() {
   return (
     <section 
       id="portfolio" 
-      className="relative w-full py-24 md:py-32 bg-[#0c0c0c] border-b border-gold-leaf/5"
+      className="relative w-full py-16 md:py-24 lg:py-32 bg-[#0c0c0c] border-b border-gold-leaf/5"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
@@ -132,7 +132,7 @@ export default function Portfolio() {
                 />
 
                 {/* Hover Reveal Details Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 z-10">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 z-10">
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="font-nunito text-[9px] uppercase tracking-widest text-gold-leaf font-bold">

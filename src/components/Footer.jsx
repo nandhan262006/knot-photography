@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, MapPin, Camera } from 'lucide-react';
+import { MessageCircle, MapPin } from 'lucide-react';
 
 const InstagramIcon = ({ size = 20 }) => (
   <svg
@@ -23,19 +23,18 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#050505] border-t border-gold-leaf/10 py-12 px-6">
+    <footer className="bg-[#050505] border-t border-gold-leaf/10 py-12 px-6" style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom))' }}>
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-between gap-8 md:flex-row">
         
-        {/* Brand logo/monogram */}
-        <div className="flex items-center gap-2">
-          <Camera className="w-5 h-5 text-gold-leaf" />
-          <span className="font-cormorant text-xl tracking-widest text-cream-white font-light">
-            THE KNOT
-          </span>
-        </div>
+        {/* Brand logo */}
+        <img
+          src="/images/knotlogo2025.png"
+          alt="THE KNOT"
+          className="h-10 w-auto object-contain opacity-80"
+        />
 
         {/* Studio copy */}
-        <div className="text-center font-nunito text-xs text-cream-white/50 tracking-wider">
+        <div className="text-center font-nunito text-xs text-cream-white/50 tracking-wider md:tracking-wider tracking-normal">
           © {currentYear} THE KNOT Photography · Nellore. All Rights Reserved.
           <p className="mt-1 text-[10px] text-rose-dusty/40 uppercase tracking-widest">
             Where Every Moment Becomes Forever
