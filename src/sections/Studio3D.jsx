@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Instagram } from 'lucide-react';
 
 export default function Studio3D() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -86,6 +86,15 @@ export default function Studio3D() {
           <p className="font-nunito text-xs md:text-sm text-cream-white/50 tracking-wider mt-4 max-w-xl mx-auto">
             📸 3D Themes | Premium Props | Memorable Moments
           </p>
+          <a
+            href="https://www.instagram.com/kids_studio_3d_nellore"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] text-rose-blush hover:text-gold-leaf border border-rose-blush/30 hover:border-gold-leaf px-5 py-2.5 mt-6 transition-all duration-300 clickable"
+          >
+            <Instagram size={14} />
+            Follow on Instagram
+          </a>
           <div className="w-12 h-[1px] bg-rose-blush mx-auto mt-4" />
         </div>
 

@@ -47,8 +47,19 @@ export default function Footer() {
             href="https://www.instagram.com/the_knot_photography_nellore"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram"
+            aria-label="Instagram - THE KNOT"
             className="hover:text-gold-leaf transition-colors duration-300 clickable"
+            title="@the_knot_photography_nellore"
+          >
+            <InstagramIcon size={20} />
+          </a>
+          <a
+            href="https://www.instagram.com/kids_studio_3d_nellore"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram - Kids Studio 3D Nellore"
+            className="hover:text-rose-blush transition-colors duration-300 clickable"
+            title="@kids_studio_3d_nellore"
           >
             <InstagramIcon size={20} />
           </a>
