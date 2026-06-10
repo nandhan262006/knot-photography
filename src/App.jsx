@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Global Layout Components
@@ -17,10 +18,12 @@ import Portfolio from './sections/Portfolio';
 import Reviews from './sections/Reviews';
 import Contact from './sections/Contact';
 
-export default function App() {
+// Pages
+import GalleryPage from './pages/GalleryPage';
+
+function HomePage() {
   return (
-    <div className="relative min-h-screen bg-[#050505] text-[#faf8f5] overflow-x-hidden selection:bg-[#d4a0a0] selection:text-black antialiased font-nunito">
-      
+    <>
       {/* Custom Global Effects */}
       <CustomCursor />
       <ScrollProgress />
@@ -31,25 +34,12 @@ export default function App() {
 
       {/* Main Sections */}
       <main className="w-full flex flex-col">
-        {/* Section 1: Hero Particle Scene */}
         <Hero />
-
-        {/* Section 2: About Parallax Split */}
         <About />
-
-        {/* Section 3: 3D Services Deck */}
         <Services />
-
-        {/* Section 4: Biggest 3D Photo Studio */}
         <Studio3D />
-
-        {/* Section 5: Portfolio Masonry + Lightbox */}
         <Portfolio />
-
-        {/* Section 6: Infinite Review Ticker */}
         <Reviews />
-
-        {/* Section 7: Contact & Booking */}
         <Contact />
       </main>
 
@@ -58,7 +48,19 @@ export default function App() {
 
       {/* Pulsing Floating WhatsApp Widget */}
       <FloatingWhatsApp />
+    </>
+  );
+}
 
-    </div>
+export default function App() {
+  return (
+    <BrowserRouter>
+      <div className="relative min-h-screen bg-[#050505] text-[#faf8f5] overflow-x-hidden selection:bg-[#d4a0a0] selection:text-black antialiased font-nunito">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }

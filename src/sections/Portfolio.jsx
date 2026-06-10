@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import Lightbox from '../components/Lightbox';
-import { ZoomIn } from 'lucide-react';
+import { ZoomIn, ArrowRight } from 'lucide-react';
 
 export default function Portfolio() {
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -104,6 +106,17 @@ export default function Portfolio() {
               {tag}
             </button>
           ))}
+        </div>
+
+        {/* View Full Gallery CTA */}
+        <div className="flex justify-center mb-12">
+          <button
+            onClick={() => navigate('/gallery')}
+            className="group flex items-center gap-3 font-nunito text-xs uppercase tracking-[0.25em] border border-gold-leaf/40 hover:border-gold-leaf px-8 py-3.5 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 clickable"
+          >
+            View My Gallery
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+          </button>
         </div>
 
         {/* Masonry Grid Layout */}

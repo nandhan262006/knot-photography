@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
+  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +27,7 @@ export default function Navbar() {
     { name: 'Services', href: '#services' },
     { name: 'Studio 3D', href: '#studio3d' },
     { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Gallery', href: '/gallery', external: true },
     { name: 'Reviews', href: '#reviews' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -48,16 +53,28 @@ export default function Navbar() {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="relative font-nunito text-sm uppercase tracking-widest text-cream-white/70 hover:text-cream-white transition-colors duration-300 py-2 group clickable"
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gold-leaf transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
+          {navLinks.map((link) =>
+            link.external ? (
+              <Link
+                key={link.name}
+                to={link.href}
+                onClick={() => setIsOpen(false)}
+                className="relative font-nunito text-sm uppercase tracking-widest text-cream-white/70 hover:text-cream-white transition-colors duration-300 py-2 group clickable"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gold-leaf transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.href}
+                className="relative font-nunito text-sm uppercase tracking-widest text-cream-white/70 hover:text-cream-white transition-colors duration-300 py-2 group clickable"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gold-leaf transition-all duration-300 group-hover:w-full" />
+              </a>
+            )
+          )}
         </div>
 
         {/* Desktop CTA Booking Button */}
@@ -101,16 +118,27 @@ export default function Navbar() {
           className="h-36 w-auto object-contain mb-6 opacity-90"
         />
 
-        {navLinks.map((link) => (
-          <a
-            key={link.name}
-            href={link.href}
-            onClick={() => setIsOpen(false)}
-            className="font-cormorant text-xl md:text-2xl tracking-widest text-cream-white hover:text-gold-leaf transition-colors duration-300 clickable"
-          >
-            {link.name}
-          </a>
-        ))}
+        {navLinks.map((link) =>
+          link.external ? (
+            <Link
+              key={link.name}
+              to={link.href}
+              onClick={() => setIsOpen(false)}
+              className="font-cormorant text-xl md:text-2xl tracking-widest text-cream-white hover:text-gold-leaf transition-colors duration-300 clickable"
+            >
+              {link.name}
+            </Link>
+          ) : (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="font-cormorant text-xl md:text-2xl tracking-widest text-cream-white hover:text-gold-leaf transition-colors duration-300 clickable"
+            >
+              {link.name}
+            </a>
+          )
+        )}
 
         <a
           href="https://wa.me/918500563003"

@@ -18,7 +18,7 @@ export default function Services() {
   const services = [
     { id: 0, title: "Bridal Photography", image: "/images/bridalpackage.jpg" },
     { id: 1, title: "Candid Wedding Shoots", image: "/images/candid.png" },
-    { id: 2, title: "Pre-Wedding Shoots", image: "/images/prewedding.png" },
+    { id: 2, title: "Pre-Wedding Shoots", image: "/images/PREWEDDING.jpeg" },
     { id: 3, title: "Event Coverage", image: "/images/hero_bg.png" },
     { id: 4, title: "Album & Reels", image: "/images/knot.png" }
   ];
