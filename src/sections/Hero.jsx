@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="relative w-full max-sm:h-[70vh] h-dvh min-h-screen overflow-hidden flex flex-col justify-center items-center bg-[#050505]"
+      className="relative w-full max-sm:h-[50vh] h-dvh min-h-screen overflow-hidden flex flex-col justify-center items-center bg-[#050505]"
     >
       {/* Background Cinematic Shading */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505] pointer-events-none z-10" />
