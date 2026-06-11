@@ -58,7 +58,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: videoEnded ? 1 : 0 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-        className="absolute inset-0 w-full h-full object-cover z-0 max-sm:scale-[1.5]"
+        className="absolute inset-0 w-full h-full object-cover z-0"
         src="/images/knotlogo2025.png"
         alt="THE KNOT"
       />
