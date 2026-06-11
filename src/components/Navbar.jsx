@@ -33,7 +33,7 @@ export default function Navbar() {
     <nav 
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-[#050505]/85 backdrop-blur-md border-b border-gold-leaf/10 py-2 shadow-lg' 
+          ? 'bg-[#050505]/85 border-b border-gold-leaf/10 py-2 shadow-lg' 
           : 'bg-transparent py-2 md:py-3'
       }`}
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
@@ -80,7 +80,7 @@ export default function Navbar() {
             href="https://wa.me/918500563003"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-shimmer font-nunito text-xs uppercase tracking-widest border border-gold-leaf/50 hover:border-gold-leaf px-6 py-2.5 rounded-none text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 font-medium clickable"
+            className="font-nunito text-xs uppercase tracking-widest border border-gold-leaf/50 hover:border-gold-leaf px-6 py-2.5 rounded-none text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 font-medium clickable"
           >
             Book Session
           </a>
