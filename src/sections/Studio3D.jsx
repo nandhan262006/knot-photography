@@ -14,11 +14,11 @@ export default function Studio3D() {
   useEffect(() => { activeIndexRef.current = activeIndex; }, [activeIndex]);
 
   const cards = [
-    { id: 0, title: "3D Themed Backdrops", image: "/images/bridal.png" },
-    { id: 1, title: "Premium Baby Props", image: "/images/candid.png" },
-    { id: 2, title: "Cake Smash Sessions", image: "/images/knot.png" },
-    { id: 3, title: "Newborn Photography", image: "/images/prewedding.png" },
-    { id: 4, title: "Birthday Party Coverage", image: "/images/hero_bg.png" }
+    { id: 0, image: "/images/kidsstudio1.png" },
+    { id: 1,  image: "/images/kidsstudio2.png" },
+    { id: 2, image: "/images/kidsstudio3.png" },
+    { id: 3, image: "/images/kidsstudio4.png" },
+    { id: 4, image: "/images/kidsstudio5.png" }
   ];
 
   const getCardWidth = () =>
