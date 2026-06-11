@@ -38,11 +38,11 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: videoEnded ? 0 : 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0 w-full h-full z-0 max-sm:scale-[0.6]"
+        className="absolute inset-0 w-full h-full z-0"
       >
         <video
           ref={videoRef}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover max-sm:object-contain"
           src="/images/i_need_a_logo_revaling_video_f.mp4"
           muted
           playsInline
@@ -55,7 +55,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: videoEnded ? 1 : 0 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-        className="absolute inset-0 w-full h-full object-cover z-0 max-sm:scale-[0.6]"
+        className="absolute inset-0 w-full h-full object-cover z-0 max-sm:object-contain"
         src="/images/knotlogo2025.png"
         alt="THE KNOT"
       />
