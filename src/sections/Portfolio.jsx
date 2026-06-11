@@ -17,25 +17,25 @@ export default function Portfolio() {
       id: 0,
       title: "Tying the Sacred Thread",
       category: "Wedding",
-      url: "/images/knot.png"
+      url: "/images/weddings.jpg"
     },
     {
       id: 1,
       title: "Legacy Vows at Sunset",
       category: "Pre-Wedding",
-      url: "/images/prewedding.png"
+      url: "/images/prewedding.jpg"
     },
     {
       id: 2,
       title: "A Golden Gaze",
       category: "Reception",
-      url: "/images/bridal.png"
+      url: "/images/prewedding.jpg"
     },
     {
       id: 3,
       title: "Haldi Laughter & Showers",
       category: "Wedding",
-      url: "/images/candid.png"
+      url: "/images/"
     },
     {
       id: 4,

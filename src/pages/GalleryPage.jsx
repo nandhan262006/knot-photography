@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import Lightbox from '../components/Lightbox';
 
 const galleryImages = [
-  { id: 0, title: "Bridal Splendor", category: "Wedding", url: "/images/bridal.png" },
+  { id: 0, title: "Bridal Splendor", category: "Wedding", url: "/images/weddings.jpg" },
   { id: 1, title: "Bridal Package Highlight", category: "Wedding", url: "/images/bridalpackage.jpg" },
   { id: 2, title: "Candid Laughter", category: "Candid", url: "/images/candid.png" },
   { id: 3, title: "Golden Hour Glow", category: "Pre-Wedding", url: "/images/hero_bg.png" },
   { id: 4, title: "Tying the Knot", category: "Wedding", url: "/images/knot.png" },
-  { id: 5, title: "Love in Frames", category: "Pre-Wedding", url: "/images/prewedding.png" },
+  { id: 5, title: "Love in Frames", category: "Pre-Wedding", url: "/images/prewedding.jpg" },
   { id: 6, title: "Pre-Wedding Elegance", category: "Pre-Wedding", url: "/images/PREWEDDING.jpeg" },
 ];
 
