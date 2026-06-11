@@ -35,7 +35,7 @@ export default function Portfolio() {
       id: 3,
       title: "Haldi Laughter & Showers",
       category: "Wedding",
-      url: "/images/"
+      url: "/images/weddings.jpg"
     },
     {
       id: 4,
