@@ -25,10 +25,7 @@ export default function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Studio 3D', href: '#studio3d' },
     { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Gallery', href: '/gallery', external: true },
-    { name: 'Reviews', href: '#reviews' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -36,8 +33,8 @@ export default function Navbar() {
     <nav 
       className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-[#050505]/85 backdrop-blur-md border-b border-gold-leaf/10 py-4 shadow-lg' 
-          : 'bg-transparent py-4 md:py-6'
+          ? 'bg-[#050505]/85 backdrop-blur-md border-b border-gold-leaf/10 py-2 shadow-lg' 
+          : 'bg-transparent py-2 md:py-3'
       }`}
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
@@ -47,7 +44,7 @@ export default function Navbar() {
           <img
             src="/images/navlog.png"
             alt="THE KNOT"
-            className="h-28 md:h-36 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+            className="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
           />
         </a>
 
@@ -115,7 +112,7 @@ export default function Navbar() {
         <img
           src="/images/navlog.png"
           alt="THE KNOT"
-          className="h-36 w-auto object-contain mb-6 opacity-90"
+          className="h-20 w-auto object-contain mb-4 opacity-90"
         />
 
         {navLinks.map((link) =>

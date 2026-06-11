@@ -5,7 +5,6 @@ import './App.css';
 // Global Layout Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
@@ -25,7 +24,6 @@ function HomePage() {
   return (
     <>
       {/* Custom Global Effects */}
-      <CustomCursor />
       <ScrollProgress />
       <div className="grain-overlay" />
 
