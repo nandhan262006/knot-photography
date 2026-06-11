@@ -90,7 +90,7 @@ export default function About() {
               Based in the heart of Nellore, Andhra Pradesh, <strong className="text-cream-white font-medium">THE KNOT Photography</strong> is a premier boutique studio dedicated to capturing the raw emotion, grandeur, and fine details of your union. We blend editorial elegance with documentary realism, documenting moments that endure for generations.
             </p>
             <p>
-              From the delicate exchange of wedding vows to the joyous shower of flowers during the rituals, our cinematic approach ensures that every smile, tear, and golden glance is preserved as a precious family heirloom. Rated <span className="text-gold-leaf font-bold">4.8★</span> with <span className="text-gold-leaf font-bold">109 reviews</span> on Google, we are privileged to be trusted by hundreds of families.
+              From the delicate exchange of wedding vows to the joyous shower of flowers during the rituals, our cinematic approach ensures that every smile, tear, and golden glance is preserved as a precious family heirloom. Rated <span className="text-gold-leaf font-bold">4.8★</span> with <span className="text-gold-leaf font-bold">1k+ reviews</span> on Google, we are privileged to be trusted by hundreds of families.
             </p>
           </motion.div>
 
