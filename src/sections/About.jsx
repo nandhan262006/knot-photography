@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Star, Award, Heart, Camera } from 'lucide-react';
+import { Star, Award, Heart } from 'lucide-react';
 
 export default function About() {
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
@@ -62,42 +62,8 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
         
-        {/* Left Side: Main Photographer Portrait */}
-        <div className="hidden md:flex md:col-span-3 lg:col-span-4 justify-center items-center h-full relative">
-          <div className="relative w-full max-w-xs aspect-[3/4] overflow-hidden border border-gold-leaf/10 group bg-[#1a1a1a] flex items-center justify-center">
-            <img
-              src="/images/photographer.png"
-              alt="THE KNOT Photographer"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-cream-white/30 font-nunito text-xs uppercase tracking-[0.2em]">
-              <Camera size={32} className="mb-2 text-gold-leaf/30" />
-              <span className="text-[10px]">Photographer Photo</span>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-4 left-4 right-4 z-10">
-              <div className="font-nunito text-[10px] uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-1">
-                THE KNOT
-              </div>
-              <div className="font-cormorant text-lg text-cream-white font-light italic">
-                Lead Photographer
-              </div>
-            </div>
-          </div>
-          <motion.div
-            style={{ 
-              transform: `rotate(-90deg) translate3d(${parallax.x * -0.5}px, ${parallax.y * -0.5}px, 0)`,
-              transition: 'transform 0.2s ease-out'
-            }}
-            className="absolute text-stroke-gold font-serif-display text-5xl lg:text-7xl uppercase tracking-[0.25em] select-none whitespace-nowrap origin-center pointer-events-none opacity-30"
-          >
-            EST. IN NELLORE
-          </motion.div>
-        </div>
-
         {/* Right Side: Studio description + 3 stat counters */}
-        <div className="md:col-span-9 lg:col-span-8 flex flex-col justify-center">
+        <div className="md:col-span-12 flex flex-col justify-center">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
