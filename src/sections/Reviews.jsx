@@ -85,7 +85,7 @@ export default function Reviews() {
         <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-[#0c0c0c] to-transparent z-10 pointer-events-none" />
 
         <div className="animate-marquee gap-6">
-          {[...googleReviews, ...googleReviews].map((review, index) => (
+          {[...googleReviews, ...googleReviews, ...googleReviews, ...googleReviews].map((review, index) => (
             <div
               key={`${review.id}-${index}`}
               className="bg-white/[0.04] border border-white/[0.06] hover:border-white/[0.12] w-[320px] md:w-[400px] p-6 md:p-7 flex flex-col justify-between transition-all duration-300 pointer-events-auto rounded-lg"

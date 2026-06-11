@@ -141,26 +141,23 @@ html, body {
 /* Marquee / Infinite Ticker Animation */
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-25%, 0, 0);
   }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 25s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
 }
 
 @media (max-width: 640px) {
   .animate-marquee {
-    animation-duration: 35s;
+    animation-duration: 60s;
   }
 }
 
