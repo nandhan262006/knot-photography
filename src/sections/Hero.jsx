@@ -74,14 +74,14 @@ export default function Hero() {
           >
             <a
               href="#portfolio"
-              className="btn-shimmer inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] border border-gold-leaf/60 px-6 py-3 text-gold-leaf hover:bg-gold-leaf hover:text-black font-semibold transition-all duration-500 rounded-none shadow-lg shadow-gold-leaf/5 hover:shadow-gold-leaf/10 clickable"
+              className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] border border-gold-leaf/60 px-6 py-3 text-gold-leaf hover:bg-gold-leaf hover:text-black font-semibold transition-all duration-500 rounded-none shadow-lg shadow-gold-leaf/5 hover:shadow-gold-leaf/10 clickable"
             >
               <Briefcase size={14} />
               Explore My Work
             </a>
             <a
               href="#contact"
-              className="btn-shimmer inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] border border-gold-leaf/60 px-6 py-3 text-gold-leaf hover:bg-gold-leaf hover:text-black font-semibold transition-all duration-500 rounded-none shadow-lg shadow-gold-leaf/5 hover:shadow-gold-leaf/10 clickable"
+              className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] border border-gold-leaf/60 px-6 py-3 text-gold-leaf hover:bg-gold-leaf hover:text-black font-semibold transition-all duration-500 rounded-none shadow-lg shadow-gold-leaf/5 hover:shadow-gold-leaf/10 clickable"
             >
               <MessageCircle size={14} />
               Contact
