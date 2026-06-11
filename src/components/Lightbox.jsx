@@ -1,10 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Download, Share2 } from 'lucide-react';
 
 export default function Lightbox({ isOpen, images, activeIndex, onClose, setActiveIndex }) {
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handlePrev = useCallback(() => {
+    setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  }, [images.length, setActiveIndex]);
+
+  const handleNext = useCallback(() => {
+    setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  }, [images.length, setActiveIndex]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -22,34 +30,24 @@ export default function Lightbox({ isOpen, images, activeIndex, onClose, setActi
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'auto';
     };
-  }, [isOpen, activeIndex]);
+  }, [isOpen, onClose, handlePrev, handleNext]);
 
   if (!isOpen || images.length === 0) return null;
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
-
   // Mobile swipe gestures
   const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
+    touchStartX.current = e.targetTouches[0].clientX;
   };
 
   const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    touchEndX.current = e.targetTouches[0].clientX;
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 70) {
-      // swipe left -> next
+    const diff = touchStartX.current - touchEndX.current;
+    if (diff > 70) {
       handleNext();
-    }
-    if (touchStart - touchEnd < -70) {
-      // swipe right -> prev
+    } else if (diff < -70) {
       handlePrev();
     }
   };
@@ -64,8 +62,11 @@ export default function Lightbox({ isOpen, images, activeIndex, onClose, setActi
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center select-none"
-        style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+        style={{ paddingBottom: 'env(safe-area-inset-bottom)', touchAction: 'pan-y' }}
         onClick={onClose}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {/* Top Control Bar */}
         <div 
@@ -114,9 +115,6 @@ export default function Lightbox({ isOpen, images, activeIndex, onClose, setActi
         <div
           className="w-full max-w-5xl max-h-[70vh] md:max-h-[80vh] px-4 flex flex-col items-center justify-center"
           onClick={(e) => e.stopPropagation()}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
         >
           <motion.img
             key={activeImage.id}

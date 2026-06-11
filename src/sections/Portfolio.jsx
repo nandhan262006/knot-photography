@@ -17,49 +17,49 @@ export default function Portfolio() {
       id: 0,
       title: "Tying the Sacred Thread",
       category: "Wedding",
-      url: "/images/weddings.jpg"
+      url: "/images/gallery3.jpeg"
     },
     {
       id: 1,
       title: "Legacy Vows at Sunset",
       category: "Pre-Wedding",
-      url: "/images/prewedding.jpg"
+      url: "/images/gallery4.jpg"
     },
     {
       id: 2,
       title: "A Golden Gaze",
       category: "Reception",
-      url: "/images/prewedding.jpg"
+      url: "/images/gallery6.jpeg"
     },
     {
       id: 3,
       title: "Haldi Laughter & Showers",
       category: "Wedding",
-      url: "/images/weddings.jpg"
+      url: "/images/gallery5.jpeg"
     },
     {
       id: 4,
       title: "Promises of Gold",
       category: "Engagement",
-      url: "/images/hero_bg.png"
+      url: "/images/gallery7.jpeg"
     },
     {
       id: 5,
       title: "A Saree of Crimson & Gold",
       category: "Engagement",
-      url: "/images/bridal.png"
+      url: "/images/gallery8.jpg"
     },
     {
       id: 6,
       title: "Ancient Pathways",
       category: "Pre-Wedding",
-      url: "/images/prewedding.png"
+      url: "/images/gallery9.jpg"
     },
     {
       id: 7,
       title: "Heirloom Vows",
       category: "Reception",
-      url: "/images/knot.png"
+      url: "/images/gallery10.jpg"
     }
   ];
 
