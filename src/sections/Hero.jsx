@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Briefcase, MessageCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
 export default function Hero() {
   const videoRef = useRef(null);
@@ -63,32 +63,6 @@ export default function Hero() {
         alt="THE KNOT"
       />
 
-      {/* Post-video CTA Buttons */}
-      <AnimatePresence>
-        {videoEnded && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            className="absolute bottom-24 md:bottom-28 z-20 flex flex-col sm:flex-row items-center gap-4"
-          >
-            <a
-              href="#portfolio"
-              className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] text-gold-leaf font-semibold clickable"
-            >
-              <Briefcase size={14} />
-              Explore My Work
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] text-gold-leaf font-semibold clickable"
-            >
-              <MessageCircle size={14} />
-              Contact
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Down indicator */}
       <motion.div 
