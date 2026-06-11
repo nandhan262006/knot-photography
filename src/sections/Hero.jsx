@@ -34,24 +34,28 @@ export default function Hero() {
       <div className="absolute inset-0 bg-radial-gradient from-transparent to-[#050505]/90 pointer-events-none z-10" />
 
       {/* Full-screen Logo Reveal Video Background */}
-      <motion.video
-        ref={videoRef}
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: videoEnded ? 0 : 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/images/i_need_a_logo_revaling_video_f.mp4"
-        muted
-        playsInline
-        onEnded={handleEnded}
-      />
+        className="absolute inset-0 w-full h-full z-0"
+      >
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/images/i_need_a_logo_revaling_video_f.mp4"
+          muted
+          playsInline
+          onEnded={handleEnded}
+        />
+      </motion.div>
 
       {/* Crisp Logo Image Background (after video ends) */}
       <motion.img
         initial={{ opacity: 0 }}
         animate={{ opacity: videoEnded ? 1 : 0 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-        className="absolute inset-0 w-full h-full object-cover max-sm:object-contain max-sm:bg-[#050505] z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0"
         src="/images/knotlogo2025.png"
         alt="THE KNOT"
       />
