@@ -151,9 +151,6 @@ export default function Portfolio() {
                       <span className="font-nunito text-[9px] uppercase tracking-widest text-gold-leaf font-bold">
                         {item.category}
                       </span>
-                      <h3 className="font-cormorant text-xl text-cream-white tracking-widest font-light mt-1">
-                        {item.title}
-                      </h3>
                     </div>
                     <div className="p-2 border border-gold-leaf/40 rounded-full text-gold-leaf bg-black/60">
                       <ZoomIn size={16} />
