@@ -22,7 +22,9 @@ export default function Services() {
     { id: 3, title: "Pre Wedding", image: "/images/prewedding.jpg" },
     { id: 4, title: "Fashion Photography", image: "/images/fashion.jpg" },
     { id: 5, title: "Outdoor Photography", image: "/images/outdoor.jpg" },
-    { id: 6, title: "Product", image: "/images/product.jpg" }
+    { id: 6, title: "Baby Photography", image: "/images/baby.jpg" },
+    { id: 7, title: "Maternity Shoot", image: "/images/maternity.jpg" },
+    { id: 8, title: "Product", image: "/images/product.jpg" }
   ];
 
   const getCardWidth = () =>
