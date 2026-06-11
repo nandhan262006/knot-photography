@@ -74,14 +74,14 @@ export default function Hero() {
           >
             <a
               href="#portfolio"
-              className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] border border-gold-leaf/60 px-6 py-3 text-gold-leaf font-semibold rounded-none shadow-lg shadow-gold-leaf/5 clickable"
+              className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] text-gold-leaf font-semibold clickable"
             >
               <Briefcase size={14} />
               Explore My Work
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] border border-gold-leaf/60 px-6 py-3 text-gold-leaf font-semibold rounded-none shadow-lg shadow-gold-leaf/5 clickable"
+              className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] text-gold-leaf font-semibold clickable"
             >
               <MessageCircle size={14} />
               Contact
