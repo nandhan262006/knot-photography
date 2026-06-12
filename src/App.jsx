@@ -19,7 +19,6 @@ import Contact from './sections/Contact';
 
 // Pages
 import GalleryPage from './pages/GalleryPage';
-import StudioPage from './pages/StudioPage';
 
 function HomePage() {
   return (
@@ -58,7 +57,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/studio/*" element={<StudioPage />} />
         </Routes>
       </div>
     </BrowserRouter>
