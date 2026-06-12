@@ -1,67 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Lightbox from '../components/Lightbox';
 import { ZoomIn, ArrowRight } from 'lucide-react';
+import { getPortfolio } from '../../sanity/lib/client';
 
 export default function Portfolio() {
   const navigate = useNavigate();
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const tags = ['All', 'Wedding', 'Pre-Wedding', 'Reception', 'Engagement'];
 
-  const galleryItems = [
-    {
-      id: 0,
-      title: "Tying the Sacred Thread",
-      category: "Wedding",
-      url: "/images/gallery3.jpeg"
-    },
-    {
-      id: 1,
-      title: "Legacy Vows at Sunset",
-      category: "Pre-Wedding",
-      url: "/images/gallery4.jpg"
-    },
-    {
-      id: 2,
-      title: "A Golden Gaze",
-      category: "Reception",
-      url: "/images/gallery6.jpeg"
-    },
-    {
-      id: 3,
-      title: "Haldi Laughter & Showers",
-      category: "Wedding",
-      url: "/images/gallery5.jpeg"
-    },
-    {
-      id: 4,
-      title: "Promises of Gold",
-      category: "Engagement",
-      url: "/images/gallery7.jpeg"
-    },
-    {
-      id: 5,
-      title: "A Saree of Crimson & Gold",
-      category: "Engagement",
-      url: "/images/gallery8.jpg"
-    },
-    {
-      id: 6,
-      title: "Ancient Pathways",
-      category: "Pre-Wedding",
-      url: "/images/gallery9.jpg"
-    },
-    {
-      id: 7,
-      title: "Heirloom Vows",
-      category: "Reception",
-      url: "/images/gallery10.jpg"
-    }
-  ];
+  useEffect(() => {
+    getPortfolio()
+      .then((data) => setItems(data))
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
+  const galleryItems = items;
 
   const filteredItems = activeFilter === 'All' 
     ? galleryItems 
@@ -127,7 +88,7 @@ export default function Portfolio() {
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => (
               <motion.div
-                key={item.id}
+                key={item._id}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}

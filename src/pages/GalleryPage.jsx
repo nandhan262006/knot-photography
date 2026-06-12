@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ZoomIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Lightbox from '../components/Lightbox';
-
-const galleryImages = [
-  { id: 0, title: "Bridal Splendor", category: "Wedding", url: "/images/gallery3.jpeg" },
-  { id: 1, title: "Bridal Package Highlight", category: "Wedding", url: "/images/gallery8.jpg" },
-  { id: 2, title: "Candid Laughter", category: "Candid", url: "/images/outdoor.jpg" },
-  { id: 3, title: "Golden Hour Glow", category: "Pre-Wedding", url: "/images/maternity.png" },
-  { id: 4, title: "Tying the Knot", category: "Wedding", url: "/images/gallery5.jpeg" },
-  { id: 5, title: "Love in Frames", category: "Pre-Wedding", url: "/images/gallery4.jpg" },
-  { id: 6, title: "Pre-Wedding Elegance", category: "Pre-Wedding", url: "/images/gallery9.jpg" },
-];
+import { getGallery } from '../../sanity/lib/client';
 
 export default function GalleryPage() {
   const navigate = useNavigate();
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  useEffect(() => {
+    getGallery()
+      .then((data) => setGalleryImages(data))
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
 
   const openLightbox = (index) => {
     setLightboxIndex(index);
@@ -57,10 +57,20 @@ export default function GalleryPage() {
 
       {/* Gallery Grid */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20">
+        {loading && (
+          <div className="flex justify-center items-center py-32">
+            <div className="w-8 h-8 border border-gold-leaf/30 border-t-gold-leaf rounded-full animate-spin" />
+          </div>
+        )}
+        {!loading && galleryImages.length === 0 && (
+          <div className="text-center py-32">
+            <p className="font-nunito text-sm text-cream-white/40 tracking-wider">No images yet. Add some in the CMS.</p>
+          </div>
+        )}
         <motion.div layout className="masonry-grid">
           {galleryImages.map((item, index) => (
             <motion.div
-              key={item.id}
+              key={item._id}
               layout
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}

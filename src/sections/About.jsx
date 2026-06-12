@@ -32,19 +32,19 @@ export default function About() {
     {
       value: "4.8★",
       label: "Google Rating",
-      desc: "Based on verified client logs",
+      desc: "Celebrated by hundreds of families",
       icon: <Star className="w-5 h-5 text-gold-leaf" />
     },
     {
       value: "1K+",
       label: "Google Reviews",
-      desc: "5-star customer trust",
+      desc: "Trusted across Andhra Pradesh & beyond",
       icon: <Award className="w-5 h-5 text-gold-leaf" />
     },
     {
       value: "500+",
       label: "Weddings Captured",
-      desc: "Across AP & beyond",
+      desc: "Transformed into timeless family treasures",
       icon: <Heart className="w-5 h-5 text-gold-leaf" />
     }
   ];
@@ -71,11 +71,11 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-              OUR HERITAGE
+              THE KNOT PHOTOGRAPHY
             </span>
             <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl text-cream-white font-light tracking-wide leading-tight mb-8">
-              We Don't Just Take Photos.<br />
-              <span className="italic text-rose-dusty">We Frame Legacies.</span>
+              Some Moments Fade.<br />
+              <span className="italic text-rose-dusty">Yours Deserve to Live Forever.</span>
             </h2>
           </motion.div>
 
@@ -87,10 +87,16 @@ export default function About() {
             className="space-y-6 text-cream-white/70 font-nunito text-sm md:text-base leading-relaxed tracking-wider max-w-2xl"
           >
             <p>
-              Based in the heart of Nellore, Andhra Pradesh, <strong className="text-cream-white font-medium">THE KNOT Photography</strong> is a premier boutique studio dedicated to capturing the raw emotion, grandeur, and fine details of your union. We blend editorial elegance with documentary realism, documenting moments that endure for generations.
+              At <strong className="text-cream-white font-medium">THE KNOT Photography</strong>, we believe a wedding is far more than a celebration—it's the beginning of a legacy. Every frame we capture holds a story: a father's trembling hands as he lets go, a mother's tear-filled smile, the silent promises exchanged between two souls, and the laughter that echoes through generations gathered under one roof.
             </p>
             <p>
-              From the delicate exchange of wedding vows to the joyous shower of flowers during the rituals, our cinematic approach ensures that every smile, tear, and golden glance is preserved as a precious family heirloom. Rated <span className="text-gold-leaf font-bold">4.8★</span> with <span className="text-gold-leaf font-bold">1k+ reviews</span> on Google, we are privileged to be trusted by hundreds of families.
+              These are the memories your children and grandchildren will one day return to, searching for where their story began. Based in Nellore, Andhra Pradesh, we craft timeless visual narratives that blend the sophistication of editorial artistry with the honesty of documentary storytelling.
+            </p>
+            <p>
+              We capture not only how your wedding looked, but how it felt—the anticipation, the joy, the chaos, the devotion, and the love woven into every ritual and every glance. Years from now, when the flowers have faded and the music has long since quieted, your photographs will remain—holding the warmth of an embrace, the sparkle of a shared smile, and the emotions that words can never fully express.
+            </p>
+            <p>
+              Because photographs are not meant to be stored away. They are meant to be held close, revisited often, and passed down as priceless family treasures. We don't just take photographs. <span className="text-gold-leaf font-semibold">We preserve the beginning of your forever.</span>
             </p>
           </motion.div>
 
@@ -132,7 +138,7 @@ export default function About() {
           {/* Small Mobile Subheading */}
           <div className="mt-12 block md:hidden text-center">
             <span className="text-stroke-gold font-serif-display text-2xl sm:text-4xl uppercase tracking-widest select-none">
-              EST. IN NELLORE
+              BEGIN YOUR FOREVER
             </span>
           </div>
 

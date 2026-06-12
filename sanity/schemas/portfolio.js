@@ -35,7 +35,11 @@ export default {
       name: 'order',
       title: 'Order',
       type: 'number',
-      initialValue: 0,
+      initialValue: async (_, context) => {
+        const client = context.getClient({apiVersion: '2024-01-01'})
+        const maxOrder = await client.fetch(`max(*[_type == "portfolio"].order)`)
+        return (maxOrder ?? -1) + 1
+      },
     },
   ],
   orderings: [

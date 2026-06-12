@@ -8,11 +8,11 @@ export const client = createClient({
 })
 
 export async function getGallery() {
-  return client.fetch(`*[_type == "gallery"] | order(order asc){title, category, "url": image.asset->url}`)
+  return client.fetch(`*[_type == "gallery"] | order(order asc){_id, title, category, "url": image.asset->url}`)
 }
 
 export async function getPortfolio() {
-  return client.fetch(`*[_type == "portfolio"] | order(order asc){title, category, "url": image.asset->url}`)
+  return client.fetch(`*[_type == "portfolio"] | order(order asc){_id, title, category, "url": image.asset->url}`)
 }
 
 export async function getReviews() {
