@@ -130,21 +130,25 @@ export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <div className="relative min-h-screen bg-[#050505] text-[#faf8f5] overflow-x-hidden selection:bg-[#d4a0a0] selection:text-black antialiased font-nunito">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/gallery" element={
-              <Suspense fallback={fallbackLoader}>
-                <GalleryPage />
-              </Suspense>
-            } />
-            <Route path="/studio/*" element={
-              <Suspense fallback={fallbackLoader}>
-                <Studio />
-              </Suspense>
-            } />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/studio/*" element={
+            <Suspense fallback={fallbackLoader}>
+              <Studio />
+            </Suspense>
+          } />
+          <Route path="/*" element={
+            <div className="relative min-h-screen bg-[#050505] text-[#faf8f5] overflow-x-hidden selection:bg-[#d4a0a0] selection:text-black antialiased font-nunito">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/gallery" element={
+                  <Suspense fallback={fallbackLoader}>
+                    <GalleryPage />
+                  </Suspense>
+                } />
+              </Routes>
+            </div>
+          } />
+        </Routes>
       </BrowserRouter>
     </HelmetProvider>
   );
