@@ -24,3 +24,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.vercel
+
+# Root-level large source video assets (not web-optimized)
+/*.mp4

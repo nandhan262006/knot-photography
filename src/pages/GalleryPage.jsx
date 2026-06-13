@@ -2,22 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ZoomIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 import Lightbox from '../components/Lightbox';
-import { getGallery } from '../../sanity/lib/client';
+
+const galleryData = [
+  { _id: 'g1', title: 'Love in the Wild', category: 'Pre-Wedding', url: '/images/prewedding.jpg' },
+  { _id: 'g2', title: 'Pre-Wedding Magic', category: 'Pre-Wedding', url: '/images/PREWEDDING.jpeg' },
+  { _id: 'g3', title: 'Happily Ever After', category: 'Wedding', url: '/images/postwedding.jpg' },
+  { _id: 'g4', title: 'The Big Day', category: 'Wedding', url: '/images/weddings.jpg' },
+  { _id: 'g5', title: 'Fashion Story', category: 'Fashion', url: '/images/fashion.jpg' },
+  { _id: 'g6', title: 'Precious Moments', category: 'Maternity', url: '/images/maternity.png' },
+  { _id: 'g7', title: 'Tiny Treasures', category: 'Baby', url: '/images/babyphotography.png' },
+  { _id: 'g8', title: 'Nature Canvas', category: 'Pre-Wedding', url: '/images/outdoor.jpg' },
+  { _id: 'g9', title: 'Little Stars', category: 'Kids Studio', url: '/images/kidsstudio1.png' },
+  { _id: 'g10', title: 'Kids Studio Magic', category: 'Kids Studio', url: '/images/kidsstudio2.png' },
+];
 
 export default function GalleryPage() {
   const navigate = useNavigate();
-  const [galleryImages, setGalleryImages] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [galleryImages, setGalleryImages] = useState(galleryData);
+  const [loading, setLoading] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-
-  useEffect(() => {
-    getGallery()
-      .then((data) => setGalleryImages(data))
-      .catch(console.error)
-      .finally(() => setLoading(false));
-  }, []);
 
   const openLightbox = (index) => {
     setLightboxIndex(index);
@@ -26,6 +32,12 @@ export default function GalleryPage() {
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-[#faf8f5] overflow-x-hidden">
+      <SEO
+        title="Gallery"
+        description="Browse our curated collection of wedding, pre-wedding, engagement, maternity, baby, and kids studio photography in Nellore, Andhra Pradesh."
+        url="https://theknotphotography.com/gallery"
+        image="/images/portfolio1.jpg"
+      />
       {/* Header */}
       <div className="relative w-full py-20 md:py-28 bg-[#050505] border-b border-gold-leaf/5">
         <div className="absolute top-[10%] right-[5%] w-80 h-80 rounded-full bg-gold-leaf/5 blur-3xl pointer-events-none" />
@@ -57,16 +69,7 @@ export default function GalleryPage() {
 
       {/* Gallery Grid */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20">
-        {loading && (
-          <div className="flex justify-center items-center py-32">
-            <div className="w-8 h-8 border border-gold-leaf/30 border-t-gold-leaf rounded-full animate-spin" />
-          </div>
-        )}
-        {!loading && galleryImages.length === 0 && (
-          <div className="text-center py-32">
-            <p className="font-nunito text-sm text-cream-white/40 tracking-wider">No images yet. Add some in the CMS.</p>
-          </div>
-        )}
+
         <motion.div layout className="masonry-grid">
           {galleryImages.map((item, index) => (
             <motion.div

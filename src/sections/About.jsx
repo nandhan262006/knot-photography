@@ -42,7 +42,7 @@ export default function About() {
       icon: <Award className="w-5 h-5 text-gold-leaf" />
     },
     {
-      value: "500+",
+      value: "300+",
       label: "Weddings Captured",
       desc: "Transformed into timeless family treasures",
       icon: <Heart className="w-5 h-5 text-gold-leaf" />
@@ -71,7 +71,7 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-              THE KNOT PHOTOGRAPHY
+              WELCOME TO KNOT PHOTOGRAPHY
             </span>
             <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl text-cream-white font-light tracking-wide leading-tight mb-8">
               Some Moments Fade.<br />
@@ -87,16 +87,16 @@ export default function About() {
             className="space-y-6 text-cream-white/70 font-nunito text-sm md:text-base leading-relaxed tracking-wider max-w-2xl"
           >
             <p>
-              At <strong className="text-cream-white font-medium">THE KNOT Photography</strong>, we believe a wedding is far more than a celebration—it's the beginning of a legacy. Every frame we capture holds a story: a father's trembling hands as he lets go, a mother's tear-filled smile, the silent promises exchanged between two souls, and the laughter that echoes through generations gathered under one roof.
+              At <strong className="text-cream-white font-medium">THE KNOT Photography</strong>, we believe a wedding is far more than a celebration—it's <span className="text-gold-leaf font-semibold">the beginning of a legacy</span>. Every frame we capture holds a story: a father's trembling hands as he lets go, a mother's tear-filled smile, the silent promises exchanged between two souls, and the laughter that echoes through generations gathered under one roof.
             </p>
             <p>
-              These are the memories your children and grandchildren will one day return to, searching for where their story began. Based in Nellore, Andhra Pradesh, we craft timeless visual narratives that blend the sophistication of editorial artistry with the honesty of documentary storytelling.
+              These are the memories your children and grandchildren will one day return to, searching for where their story began. Based in Nellore, Andhra Pradesh, we <span className="text-gold-leaf font-semibold">craft timeless visual narratives</span> that blend the sophistication of editorial artistry with the honesty of documentary storytelling.
             </p>
             <p>
-              We capture not only how your wedding looked, but how it felt—the anticipation, the joy, the chaos, the devotion, and the love woven into every ritual and every glance. Years from now, when the flowers have faded and the music has long since quieted, your photographs will remain—holding the warmth of an embrace, the sparkle of a shared smile, and the emotions that words can never fully express.
+              We capture not only how your wedding looked, but <span className="text-gold-leaf font-semibold">how it felt</span>—the anticipation, the joy, the chaos, the devotion, and the love woven into every ritual and every glance. Years from now, when the flowers have faded and the music has long since quieted, your photographs will remain—holding the warmth of an embrace, the sparkle of a shared smile, and the emotions that words can never fully express.
             </p>
             <p>
-              Because photographs are not meant to be stored away. They are meant to be held close, revisited often, and passed down as priceless family treasures. We don't just take photographs. <span className="text-gold-leaf font-semibold">We preserve the beginning of your forever.</span>
+              Because photographs are not meant to be stored away. They are meant to be <span className="text-gold-leaf font-semibold">held close, revisited often, and passed down as priceless family treasures</span>. We don't just take photographs. <span className="text-gold-leaf font-semibold underline underline-offset-4 decoration-gold-leaf/30">We preserve the beginning of your forever.</span>
             </p>
           </motion.div>
 

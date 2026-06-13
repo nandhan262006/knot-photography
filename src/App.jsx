@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import './App.css';
 
-// Global Layout Components
+import SEO from './components/SEO';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
-// Section Components
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Services from './sections/Services';
@@ -17,20 +17,94 @@ import Portfolio from './sections/Portfolio';
 import Reviews from './sections/Reviews';
 import Contact from './sections/Contact';
 
-// Pages
-import GalleryPage from './pages/GalleryPage';
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+
+const SITE_URL = 'https://theknotphotography.com';
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#business`,
+  name: 'THE KNOT Photography',
+  image: `${SITE_URL}/images/KNOT LOGO 2025.png`,
+  url: SITE_URL,
+  telephone: '+91-XXXXXXXXXX',
+  email: 'hello@theknotphotography.com',
+  description: 'Premium wedding photography studio based in Nellore, Andhra Pradesh, India. Specializing in wedding, pre-wedding, engagement, maternity, baby, and kids studio photography.',
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Nellore",
+    addressRegion: "Andhra Pradesh",
+    addressCountry: "IN"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 14.4426,
+    longitude: 79.9865
+  },
+  sameAs: [
+    "https://www.instagram.com/theknotphotography"
+  ],
+  priceRange: "₹₹₹",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "09:00",
+    closes: "20:00"
+  },
+  areaServed: [
+    { "@type": "City", name: "Nellore" },
+    { "@type": "State", name: "Andhra Pradesh" }
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Photography Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Wedding Photography" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pre-Wedding Shoot" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Engagement Photography" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Maternity Photography" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Baby Photography" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Kids Studio Photography" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fashion Photography" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Outdoor Photography" } }
+    ]
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    bestRating: "5",
+    ratingCount: "1000+"
+  }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: 'THE KNOT Photography',
+  description: 'Premium wedding photography studio in Nellore',
+  publisher: { "@id": `${SITE_URL}/#business` }
+};
+
+const fallbackLoader = (
+  <div className="min-h-screen flex items-center justify-center bg-[#050505]">
+    <div className="w-8 h-8 border-2 border-gold-leaf/30 border-t-gold-leaf rounded-full animate-spin" />
+  </div>
+);
 
 function HomePage() {
   return (
     <>
-      {/* Custom Global Effects */}
+      <SEO
+        jsonLd={[localBusinessSchema, websiteSchema]}
+      />
       <ScrollProgress />
       <div className="grain-overlay" />
 
-      {/* Header Navigation */}
       <Navbar />
 
-      {/* Main Sections */}
       <main className="w-full flex flex-col">
         <Hero />
         <About />
@@ -41,10 +115,7 @@ function HomePage() {
         <Contact />
       </main>
 
-      {/* Footer Branding */}
       <Footer />
-
-      {/* Pulsing Floating WhatsApp Widget */}
       <FloatingWhatsApp />
     </>
   );
@@ -52,13 +123,19 @@ function HomePage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="relative min-h-screen bg-[#050505] text-[#faf8f5] overflow-x-hidden selection:bg-[#d4a0a0] selection:text-black antialiased font-nunito">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <div className="relative min-h-screen bg-[#050505] text-[#faf8f5] overflow-x-hidden selection:bg-[#d4a0a0] selection:text-black antialiased font-nunito">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/gallery" element={
+              <Suspense fallback={fallbackLoader}>
+                <GalleryPage />
+              </Suspense>
+            } />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

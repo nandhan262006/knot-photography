@@ -3,24 +3,31 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Lightbox from '../components/Lightbox';
 import { ZoomIn, ArrowRight } from 'lucide-react';
-import { getPortfolio } from '../../sanity/lib/client';
+
+const portfolioData = [
+  { _id: 'p1', title: 'Eternal Vows', category: 'Wedding', url: '/images/gallery3.jpeg' },
+  { _id: 'p2', title: 'Sunset Romance', category: 'Pre-Wedding', url: '/images/gallery4.jpg' },
+  { _id: 'p3', title: 'Golden Celebration', category: 'Reception', url: '/images/gallery5.jpeg' },
+  { _id: 'p4', title: 'Promise of Forever', category: 'Engagement', url: '/images/gallery6.jpeg' },
+  { _id: 'p5', title: 'Sacred Union', category: 'Wedding', url: '/images/gallery7.jpeg' },
+  { _id: 'p6', title: 'Together Forever', category: 'Pre-Wedding', url: '/images/gallery8.jpg' },
+  { _id: 'p7', title: 'Grand Affair', category: 'Reception', url: '/images/gallery9.jpg' },
+  { _id: 'p8', title: 'Blissful Beginnings', category: 'Engagement', url: '/images/gallery10.jpg' },
+  { _id: 'p9', title: 'Bridal Elegance', category: 'Wedding', url: '/images/portfolio1.jpg' },
+  { _id: 'p10', title: 'Engagement Glow', category: 'Engagement', url: '/images/engagement.jpg' },
+  { _id: 'p11', title: 'Engagement Glow', category: 'Engagement', url: '/images/portfolio.jpeg' },
+
+];
 
 export default function Portfolio() {
   const navigate = useNavigate();
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState(portfolioData);
+  const [loading, setLoading] = useState(false);
   const [activeFilter, setActiveFilter] = useState('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const tags = ['All', 'Wedding', 'Pre-Wedding', 'Reception', 'Engagement'];
-
-  useEffect(() => {
-    getPortfolio()
-      .then((data) => setItems(data))
-      .catch(console.error)
-      .finally(() => setLoading(false));
-  }, []);
 
   const galleryItems = items;
 
@@ -43,13 +50,21 @@ export default function Portfolio() {
         
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-            VISUAL JOURNAL
-          </span>
-          <h2 className="font-cormorant text-4xl md:text-5xl text-cream-white font-light tracking-wide">
-            Selected Works
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="w-8 h-[1px] bg-gold-leaf/40" />
+            <span className="font-nunito text-[10px] uppercase tracking-[0.4em] text-gold-leaf font-semibold">
+              VISUAL JOURNAL
+            </span>
+            <span className="w-8 h-[1px] bg-gold-leaf/40" />
+          </div>
+          <h2 className="font-cormorant text-4xl md:text-6xl text-cream-white font-light tracking-wide">
+            Selected <span className="text-gold-leaf italic font-normal">Works</span>
           </h2>
-          <div className="w-12 h-[1px] bg-gold-leaf mx-auto mt-4" />
+          <div className="flex items-center justify-center gap-3 mt-5">
+            <span className="w-12 h-[1px] bg-gold-leaf" />
+            <span className="w-1.5 h-1.5 rounded-full bg-gold-leaf/60" />
+            <span className="w-12 h-[1px] bg-gold-leaf" />
+          </div>
         </div>
 
         {/* Filter Tags */}

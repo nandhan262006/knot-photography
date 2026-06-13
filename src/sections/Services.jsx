@@ -25,7 +25,6 @@ export default function Services() {
     { id: 6, title: "Kids Studio", image: "/images/kidsstudio1.png" },
     { id: 7, title: "Baby Photography", image: "/images/babyphotography.png" },
     { id: 8, title: "Maternity Shoot", image: "/images/maternity.png" },
-    { id: 9, title: "Product", image: "/images/product.jpg" }
   ];
 
   const getCardWidth = () =>

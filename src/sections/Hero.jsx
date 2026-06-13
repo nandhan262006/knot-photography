@@ -32,16 +32,34 @@ export default function Hero() {
       id="home" 
       className="relative w-full max-sm:h-[50vh] h-dvh overflow-hidden flex flex-col justify-center items-center bg-[#050505]"
     >
-      {/* Background Cinematic Shading */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505] pointer-events-none z-10" />
-      <div className="absolute inset-0 bg-radial-gradient from-transparent to-[#050505]/90 pointer-events-none z-10" />
+      {/* Background Cinematic Shading - reduced darkness */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/60 pointer-events-none z-10" />
+      <div className="absolute inset-0 bg-radial-gradient from-transparent to-[#050505]/60 pointer-events-none z-10" />
 
-      {/* Full-screen Logo Reveal Video Background */}
+      {/* homepage.png stands here - hidden behind black on mobile until video ends */}
+      <motion.img
+        initial={{ opacity: 1 }}
+        animate={{ opacity: videoEnded ? 1 : 0 }}
+        transition={{ duration: 0.6 }}
+        className="absolute inset-0 w-full h-full object-cover z-0 sm:opacity-100"
+        src="/images/homepage.png"
+        alt="THE KNOT Photography"
+      />
+
+      {/* Mobile black cover - slides up with video on end */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: videoEnded ? 0 : 1 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0 w-full h-full z-0"
+        initial={{ y: 0 }}
+        animate={videoEnded ? { y: '-100%' } : { y: 0 }}
+        transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+        className="absolute inset-0 w-full h-full bg-[#050505] z-[4] block sm:hidden"
+      />
+
+      {/* Full-screen Logo Reveal Video - slides up on end */}
+      <motion.div
+        initial={{ opacity: 0, y: 0 }}
+        animate={videoEnded ? { y: '-100%' } : { opacity: 1, y: 0 }}
+        transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1] }}
+        className="absolute inset-0 w-full h-full z-[5]"
       >
         <video
           ref={videoRef}
@@ -52,16 +70,6 @@ export default function Hero() {
           onEnded={handleEnded}
         />
       </motion.div>
-
-      {/* Crisp Logo Image Background (after video ends) */}
-      <motion.img
-        initial={{ opacity: 0 }}
-        animate={{ opacity: videoEnded ? 1 : 0 }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/images/knotlogo2025.png"
-        alt="THE KNOT"
-      />
 
 
       {/* Down indicator */}
