@@ -1,44 +1,35 @@
-import { useEffect, useState } from 'react';
-import { client, urlFor } from '../lib/sanity';
 import SEO from '../components/SEO';
 
-const query = `*[_type == "studioSettings"][0]{
-  storyCards[]{
-    image,
-    order
+const storyCards = [
+  {
+    order: 1,
+    title: 'Maternity',
+    description: 'Capturing the glow of motherhood — celebrate the journey that began with love.',
+    image: '/images/maternity.png',
   },
-  cameras[]{
-    name,
-    image
-  }
-}`;
+  {
+    order: 2,
+    title: 'Newborn',
+    description: 'Tiny fingers, tiny toes — preserving the purest moments of your little miracle.',
+    image: '/images/kidsstudio1.png',
+  },
+  {
+    order: 3,
+    title: 'Little Star',
+    description: 'Personality shines bright — fun, candid, and full of wonder in every frame.',
+    image: '/images/kidsstudio2.png',
+  },
+];
+
+const cameras = [
+  { name: 'Canon EOS R1', image: '/images/canonr1.png' },
+  { name: 'Canon EOS R3', image: '/images/canonr3.jpg' },
+  { name: 'Canon EOS R5', image: '/images/canonr5.png' },
+  { name: 'Sony FX3', image: '/images/sonyfx3.png' },
+  { name: 'Sony A1', image: '/images/sonya1.webp' },
+];
 
 export default function Studio3D() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    client.fetch(query).then(setData).catch(() => {});
-  }, []);
-
-  const storyConfig = [
-    { order: 1, title: 'Maternity', description: 'Capturing the glow of motherhood — celebrate the journey that began with love.' },
-    { order: 2, title: 'Newborn', description: 'Tiny fingers, tiny toes — preserving the purest moments of your little miracle.' },
-    { order: 3, title: 'Little Star', description: 'Personality shines bright — fun, candid, and full of wonder in every frame.' },
-  ];
-  const rawCards = data?.storyCards || [];
-
-  const hasOrder = rawCards.some(c => c.order != null);
-  const storyCards = storyConfig.map((config, index) => {
-    let match;
-    if (hasOrder) {
-      match = rawCards.find(c => c.order === config.order);
-    } else {
-      match = rawCards[index];
-    }
-    return { ...config, image: match?.image || null };
-  });
-  const cameras = data?.cameras;
-
   return (
     <>
       <SEO
@@ -98,8 +89,8 @@ export default function Studio3D() {
                     )}
                     <div className="relative w-full max-w-[300px] aspect-[3/4] rounded-sm overflow-hidden border border-rose-blush/20 bg-[#111] group">
                       <img
-                        src={item.image ? urlFor(item.image).width(400).url() : '/images/placeholder.jpg'}
-                        alt={item.title || ''}
+                        src={item.image}
+                        alt={item.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
@@ -131,33 +122,29 @@ export default function Studio3D() {
               </div>
             </div>
 
-            {cameras?.length > 0 && (
-              <div className="mt-20 w-full text-center overflow-hidden">
-                <h3 className="font-cormorant text-3xl md:text-4xl text-cream-white font-light tracking-wide">
-                  The Gear We Use
-                </h3>
-                <div className="mt-6 marquee-track relative">
-                  <div className="marquee-content flex items-center gap-5 md:gap-6">
-                    {[...cameras, ...cameras].map((cam, i) => (
-                      <div key={i} className="flex flex-col items-center flex-shrink-0">
-                        <div className="w-28 h-28 md:w-32 md:h-32 rounded-sm overflow-hidden border border-cream-white/10 bg-[#111] flex items-center justify-center p-3">
-                          {cam.image && (
-                            <img
-                              src={urlFor(cam.image).width(120).url()}
-                              alt={cam.name || ''}
-                              className="w-full h-full object-cover scale-110"
-                            />
-                          )}
-                        </div>
-                        <span className="font-nunito text-[10px] md:text-xs text-cream-white/50 tracking-wider mt-3 whitespace-nowrap">
-                          {cam.name}
-                        </span>
+            <div className="mt-20 w-full text-center overflow-hidden">
+              <h3 className="font-cormorant text-3xl md:text-4xl text-cream-white font-light tracking-wide">
+                The Gear We Use
+              </h3>
+              <div className="mt-6 marquee-track relative">
+                <div className="marquee-content flex items-center gap-5 md:gap-6">
+                  {[...cameras, ...cameras].map((cam, i) => (
+                    <div key={i} className="flex flex-col items-center flex-shrink-0">
+                      <div className="w-28 h-28 md:w-32 md:h-32 rounded-sm overflow-hidden border border-cream-white/10 bg-[#111] flex items-center justify-center p-3">
+                        <img
+                          src={cam.image}
+                          alt={cam.name}
+                          className="w-full h-full object-cover scale-110"
+                        />
                       </div>
-                    ))}
-                  </div>
+                      <span className="font-nunito text-[10px] md:text-xs text-cream-white/50 tracking-wider mt-3 whitespace-nowrap">
+                        {cam.name}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            )}
+            </div>
 
           </div>
 
