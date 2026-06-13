@@ -6,41 +6,6 @@ export default defineType({
   type: 'document',
   fields: [
     {
-      name: 'eyebrowTop',
-      title: 'Top Eyebrow Text',
-      type: 'string',
-    },
-    {
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
-    },
-    {
-      name: 'subheading',
-      title: 'Subheading',
-      type: 'string',
-    },
-    {
-      name: 'tagline',
-      title: 'Tagline',
-      type: 'string',
-    },
-    {
-      name: 'instagramUrl',
-      title: 'Instagram URL',
-      type: 'url',
-    },
-    {
-      name: 'instagramLabel',
-      title: 'Instagram Button Label',
-      type: 'string',
-    },
-    {
-      name: 'journeyText',
-      title: 'Journey Text (above cards)',
-      type: 'string',
-    },
-    {
       name: 'storyCards',
       title: 'Story Cards',
       description: 'Add 3 images with order 1 (Maternity), 2 (Newborn), 3 (Little Star)',
@@ -83,11 +48,6 @@ export default defineType({
           },
         },
       ],
-    },
-    {
-      name: 'gearHeading',
-      title: 'Gear Section Heading',
-      type: 'string',
     },
     {
       name: 'cameras',

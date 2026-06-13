@@ -3,18 +3,10 @@ import { client, urlFor } from '../lib/sanity';
 import SEO from '../components/SEO';
 
 const query = `*[_type == "studioSettings"][0]{
-  eyebrowTop,
-  heading,
-  subheading,
-  tagline,
-  instagramUrl,
-  instagramLabel,
-  journeyText,
   storyCards[]{
     image,
     order
   },
-  gearHeading,
   cameras[]{
     name,
     image
@@ -28,13 +20,6 @@ export default function Studio3D() {
     client.fetch(query).then(setData).catch(() => {});
   }, []);
 
-  const eyebrowTop = data?.eyebrowTop || 'for cute little stars we have';
-  const heading = data?.heading || "Andhra's Largest Baby Studio";
-  const subheading = data?.subheading || "KID'S STUDIO 3D NELLORE";
-  const tagline = data?.tagline || '100+ 3D Themes • Premium Props • Memorable Moments';
-  const instagramUrl = data?.instagramUrl || 'https://www.instagram.com/kids_studio_3d_nellore';
-  const instagramLabel = data?.instagramLabel || 'Follow on Instagram';
-  const journeyText = data?.journeyText || 'Begin your beautiful journey with us — make it memorable forever';
   const storyConfig = [
     { order: 1, title: 'Maternity', description: 'Capturing the glow of motherhood — celebrate the journey that began with love.' },
     { order: 2, title: 'Newborn', description: 'Tiny fingers, tiny toes — preserving the purest moments of your little miracle.' },
@@ -42,7 +27,6 @@ export default function Studio3D() {
   ];
   const rawCards = data?.storyCards || [];
 
-  // support both new structure { image, order } and legacy { title, description, image }
   const hasOrder = rawCards.some(c => c.order != null);
   const storyCards = storyConfig.map((config, index) => {
     let match;
@@ -53,8 +37,7 @@ export default function Studio3D() {
     }
     return { ...config, image: match?.image || null };
   });
-  const gearHeading = data?.gearHeading || 'The Gear We Use';
-  const cameras = data?.cameras || [];
+  const cameras = data?.cameras;
 
   return (
     <>
@@ -74,25 +57,25 @@ export default function Studio3D() {
 
           <div className="mb-20">
             <span className="font-nunito text-[10px] md:text-xs uppercase tracking-[0.3em] text-rose-blush/70 font-light mb-2 block">
-              {eyebrowTop}
+              for cute little stars we have
             </span>
             <h2 className="font-cormorant text-4xl md:text-5xl text-cream-white font-light tracking-wide">
-              {heading}
+              {"Andhra's Largest Baby Studio"}
             </h2>
             <span className="font-nunito text-[10px] md:text-xs uppercase tracking-[0.3em] text-rose-blush font-semibold mt-4 mb-3 block">
-              {subheading}
+              {"KID'S STUDIO 3D NELLORE"}
             </span>
             <p className="font-nunito text-xs md:text-sm text-cream-white/50 tracking-wider mt-4 max-w-xl mx-auto">
-              {tagline}
+              100+ 3D Themes • Premium Props • Memorable Moments
             </p>
             <a
-              href={instagramUrl}
+              href="https://www.instagram.com/kids_studio_3d_nellore"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-nunito text-xs uppercase tracking-[0.25em] text-rose-blush hover:text-gold-leaf border border-rose-blush/30 hover:border-gold-leaf px-5 py-2.5 mt-6 transition-all duration-300 clickable"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" strokeWidth="3"/></svg>
-              {instagramLabel}
+              Follow on Instagram
             </a>
             <div className="w-12 h-[1px] bg-rose-blush mx-auto mt-4" />
           </div>
@@ -101,7 +84,7 @@ export default function Studio3D() {
 
             <div className="relative w-full max-w-6xl mx-auto">
               <p className="font-cormorant text-xl md:text-2xl text-cream-white/50 font-light tracking-wide text-center mb-12 md:mb-16 italic">
-                {journeyText}
+                Begin your beautiful journey with us — make it memorable forever
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 relative z-10 items-start">
                   {storyCards.map((item, i) => (
@@ -148,10 +131,10 @@ export default function Studio3D() {
               </div>
             </div>
 
-            {cameras.length > 0 && (
+            {cameras?.length > 0 && (
               <div className="mt-20 w-full text-center overflow-hidden">
                 <h3 className="font-cormorant text-3xl md:text-4xl text-cream-white font-light tracking-wide">
-                  {gearHeading}
+                  The Gear We Use
                 </h3>
                 <div className="mt-6 marquee-track relative">
                   <div className="marquee-content flex items-center gap-5 md:gap-6">
