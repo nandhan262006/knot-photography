@@ -34,7 +34,8 @@ export default function Hero() {
     >
 
 
-      {/* CTA Overlay */}
+      {/* CTA Overlay - only after video ends */}
+      {videoEnded && (
       <div className="absolute bottom-24 md:bottom-32 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4">
         <a
           href="https://wa.me/918500563003?text=Hi!%20I'd%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20photography%20services."
@@ -45,6 +46,7 @@ export default function Hero() {
           Book a 15 Min Call
         </a>
       </div>
+      )}
 
       {/* homepage.png stands here - hidden behind black on mobile until video ends */}
       <motion.img
