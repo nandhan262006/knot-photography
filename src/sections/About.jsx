@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Star, Award, Heart } from 'lucide-react';
+import { getAbout } from '../lib/sanity';
 
 const defaultParagraphs = (
   <>
@@ -65,6 +66,12 @@ export default function About() {
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
   const isAboutInView = useInView(containerRef, { once: true, amount: 0.2 });
+
+  const [aboutData, setAboutData] = useState(null);
+
+  useEffect(() => {
+    getAbout().then(setAboutData).catch(() => {});
+  }, []);
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;

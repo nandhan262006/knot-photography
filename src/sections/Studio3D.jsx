@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
+import { getKidsStudio, urlFor } from '../lib/sanity';
 
 const defaultStoryCards = [
   {
@@ -30,7 +32,26 @@ const cameras = [
 ];
 
 export default function Studio3D() {
-  const storyCards = defaultStoryCards;
+  const [studioImages, setStudioImages] = useState({});
+
+  useEffect(() => {
+    getKidsStudio()
+      .then((entries) => {
+        const map = {};
+        entries.forEach((e) => {
+          if (e.image) {
+            map[e.order] = urlFor(e.image).url();
+          }
+        });
+        setStudioImages(map);
+      })
+      .catch(() => {});
+  }, []);
+
+  const storyCards = defaultStoryCards.map((card) => ({
+    ...card,
+    image: studioImages[card.order] || card.image,
+  }));
 
   return (
     <>
