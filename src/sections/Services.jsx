@@ -1,11 +1,25 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { getBespokeServices, urlFor } from '../lib/sanity';
+
+const defaultServices = [
+  { id: 0, title: "Engagement", image: "/images/engagement.jpg" },
+  { id: 1, title: "Weddings", image: "/images/weddings.jpg" },
+  { id: 2, title: "Post Wedding", image: "/images/postwedding.jpg" },
+  { id: 3, title: "Pre Wedding", image: "/images/prewedding.jpg" },
+  { id: 4, title: "Fashion Photography", image: "/images/fashion.jpg" },
+  { id: 5, title: "Outdoor Photography", image: "/images/outdoor.jpg" },
+  { id: 6, title: "Kids Studio", image: "/images/kidsstudio1.png" },
+  { id: 7, title: "Baby Photography", image: "/images/babyphotography.png" },
+  { id: 8, title: "Maternity Shoot", image: "/images/maternity.png" },
+];
 
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
+  const [imageOverrides, setImageOverrides] = useState({});
 
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
@@ -15,17 +29,24 @@ export default function Services() {
 
   useEffect(() => { activeIndexRef.current = activeIndex; }, [activeIndex]);
 
-  const services = [
-    { id: 0, title: "Engagement", image: "/images/engagement.jpg" },
-    { id: 1, title: "Weddings", image: "/images/weddings.jpg" },
-    { id: 2, title: "Post Wedding", image: "/images/postwedding.jpg" },
-    { id: 3, title: "Pre Wedding", image: "/images/prewedding.jpg" },
-    { id: 4, title: "Fashion Photography", image: "/images/fashion.jpg" },
-    { id: 5, title: "Outdoor Photography", image: "/images/outdoor.jpg" },
-    { id: 6, title: "Kids Studio", image: "/images/kidsstudio1.png" },
-    { id: 7, title: "Baby Photography", image: "/images/babyphotography.png" },
-    { id: 8, title: "Maternity Shoot", image: "/images/maternity.png" },
-  ];
+  useEffect(() => {
+    getBespokeServices()
+      .then((services) => {
+        const overrides = {};
+        services.forEach((s) => {
+          if (s.image) {
+            overrides[s.serviceName] = urlFor(s.image).url();
+          }
+        });
+        setImageOverrides(overrides);
+      })
+      .catch(() => {});
+  }, []);
+
+  const services = defaultServices.map((s) => ({
+    ...s,
+    image: imageOverrides[s.title] || s.image,
+  }));
 
   const getCardWidth = () =>
     window.innerWidth < 640 ? 280 : window.innerWidth < 768 ? 300 : 340;
