@@ -18,6 +18,7 @@ import Reviews from './sections/Reviews';
 import Contact from './sections/Contact';
 
 const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const Studio = lazy(() => import('./studio/Studio'));
 
 const SITE_URL = 'https://theknotphotography.com';
 
@@ -135,6 +136,11 @@ export default function App() {
             <Route path="/gallery" element={
               <Suspense fallback={fallbackLoader}>
                 <GalleryPage />
+              </Suspense>
+            } />
+            <Route path="/studio/*" element={
+              <Suspense fallback={fallbackLoader}>
+                <Studio />
               </Suspense>
             } />
           </Routes>
