@@ -31,10 +31,10 @@ export default function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 bg-[#050505] ${
         isScrolled 
-          ? 'bg-[#050505]/85 border-b border-gold-leaf/10 py-2 shadow-lg' 
-          : 'bg-transparent py-2 md:py-3'
+          ? 'border-b border-gold-leaf/10 py-2 shadow-lg' 
+          : 'py-2 md:py-3'
       }`}
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
