@@ -77,12 +77,12 @@ export default function Navbar() {
         {/* Desktop CTA Booking Button */}
         <div className="hidden md:block">
           <a
-            href="https://wa.me/918500563003"
+            href="https://wa.me/918500563003?text=Hi!%20I'd%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20photography%20services."
             target="_blank"
             rel="noopener noreferrer"
             className="font-nunito text-xs uppercase tracking-widest border border-gold-leaf/50 hover:border-gold-leaf px-6 py-2.5 rounded-none text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 font-medium clickable"
           >
-            Book Session
+            Book 15 Min Call
           </a>
         </div>
 
@@ -138,13 +138,13 @@ export default function Navbar() {
         )}
 
         <a
-          href="https://wa.me/918500563003"
+          href="https://wa.me/918500563003?text=Hi!%20I'd%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20photography%20services."
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setIsOpen(false)}
           className="font-nunito text-xs uppercase tracking-widest border border-gold-leaf px-6 md:px-8 py-3 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 mt-6 clickable"
         >
-          Book Your Date
+          Book 15 Min Call
         </a>
       </div>
     </nav>

@@ -34,6 +34,18 @@ export default function Hero() {
     >
 
 
+      {/* CTA Overlay */}
+      <div className="absolute bottom-24 md:bottom-32 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4">
+        <a
+          href="https://wa.me/918500563003?text=Hi!%20I'd%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20photography%20services."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-shimmer inline-flex items-center gap-3 font-nunito text-xs uppercase tracking-[0.25em] bg-gold-leaf text-black px-8 py-4 font-bold transition-all duration-300 shadow-xl shadow-gold-leaf/10 hover:shadow-gold-leaf/25 clickable"
+        >
+          Book a 15 Min Call
+        </a>
+      </div>
+
       {/* homepage.png stands here - hidden behind black on mobile until video ends */}
       <motion.img
         initial={{ opacity: 1 }}
