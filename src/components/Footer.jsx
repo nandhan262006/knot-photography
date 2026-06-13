@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MessageCircle, MapPin } from 'lucide-react';
+import { client } from '../lib/sanity';
 
 const InstagramIcon = ({ size = 20 }) => (
   <svg
@@ -21,6 +22,19 @@ const InstagramIcon = ({ size = 20 }) => (
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    client.fetch(`*[_type == "siteSettings"][0] {
+      siteName,
+      tagline,
+      copyright,
+      instagramMain,
+      instagramKids,
+      whatsappNumber,
+      googleMapsUrl
+    }`).then(setSettings).catch(() => {});
+  }, []);
 
   return (
     <footer className="bg-[#050505] border-t border-gold-leaf/10 py-12 px-6" style={{ paddingBottom: 'calc(3rem + env(safe-area-inset-bottom))' }}>
@@ -35,16 +49,16 @@ export default function Footer() {
 
         {/* Studio copy */}
         <div className="text-center font-nunito text-xs text-cream-white/50 tracking-wider md:tracking-wider tracking-normal">
-          © {currentYear} THE KNOT Photography · Nellore. All Rights Reserved.
+          © {currentYear} {settings?.siteName || 'THE KNOT Photography · Nellore'}. All Rights Reserved.
           <p className="mt-1 text-[10px] text-rose-dusty/40 uppercase tracking-widest">
-            Where Every Moment Becomes Forever
+            {settings?.tagline || 'Where Every Moment Becomes Forever'}
           </p>
         </div>
 
         {/* Social Icons */}
         <div className="flex items-center space-x-6 text-cream-white/70">
           <a
-            href="https://www.instagram.com/the_knot_photography_nellore"
+            href={settings?.instagramMain || 'https://www.instagram.com/the_knot_photography_nellore'}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram - THE KNOT"
@@ -54,7 +68,7 @@ export default function Footer() {
             <InstagramIcon size={20} />
           </a>
           <a
-            href="https://www.instagram.com/kids_studio_3d_nellore"
+            href={settings?.instagramKids || 'https://www.instagram.com/kids_studio_3d_nellore'}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram - Kids Studio 3D Nellore"
@@ -65,7 +79,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://wa.me/918500563003"
+            href={settings?.whatsappNumber ? `https://wa.me/${settings.whatsappNumber}` : 'https://wa.me/918500563003'}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
@@ -74,7 +88,7 @@ export default function Footer() {
             <MessageCircle size={20} />
           </a>
           <a
-            href="https://maps.app.goo.gl/sJApGzNLNRqhuQXB8"
+            href={settings?.googleMapsUrl || 'https://maps.app.goo.gl/sJApGzNLNRqhuQXB8'}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Google Maps Location"

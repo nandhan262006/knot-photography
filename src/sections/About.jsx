@@ -1,11 +1,27 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Star, Award, Heart } from 'lucide-react';
+import { client } from '../lib/sanity';
 
 export default function About() {
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
+  const [data, setData] = useState(null);
   const containerRef = useRef(null);
   const isAboutInView = useInView(containerRef, { once: true, amount: 0.2 });
+
+  useEffect(() => {
+    client.fetch(`*[_type == "about"][0] {
+      eyebrow,
+      headingLeft,
+      headingRight,
+      body,
+      stats[]{
+        value,
+        label,
+        description
+      }
+    }`).then(setData).catch(() => {});
+  }, []);
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
@@ -27,8 +43,9 @@ export default function About() {
     setParallax({ x: 0, y: 0 });
   };
 
-  // Stat items
-  const stats = [
+  const statIcons = [<Star className="w-5 h-5 text-gold-leaf" />, <Award className="w-5 h-5 text-gold-leaf" />, <Heart className="w-5 h-5 text-gold-leaf" />];
+
+  const stats = data?.stats?.map((s, i) => ({ ...s, desc: s.description, icon: statIcons[i] || statIcons[0] })) || [
     {
       value: "4.8★",
       label: "Google Rating",
@@ -71,11 +88,11 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-              WELCOME TO KNOT PHOTOGRAPHY
+              {data?.eyebrow || 'WELCOME TO KNOT PHOTOGRAPHY'}
             </span>
             <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl text-cream-white font-light tracking-wide leading-tight mb-8">
-              Some Moments Fade.<br />
-              <span className="italic text-rose-dusty">Yours Deserve to Live Forever.</span>
+              {data?.headingLeft || 'Some Moments Fade.'}<br />
+              <span className="italic text-rose-dusty">{data?.headingRight || 'Yours Deserve to Live Forever.'}</span>
             </h2>
           </motion.div>
 

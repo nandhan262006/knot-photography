@@ -4,6 +4,7 @@ import { ArrowLeft, ZoomIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Lightbox from '../components/Lightbox';
+import { client, urlFor } from '../lib/sanity';
 
 const galleryData = [
   { _id: 'g1', title: 'Love in the Wild', category: 'Pre-Wedding', url: '/images/prewedding.jpg' },
@@ -20,10 +21,31 @@ const galleryData = [
 
 export default function GalleryPage() {
   const navigate = useNavigate();
-  const [galleryImages, setGalleryImages] = useState(galleryData);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  useEffect(() => {
+    client.fetch(`*[_type == "gallery"][0] {
+      seoTitle,
+      seoDescription,
+      badge,
+      heading,
+      subheading,
+      images[]{
+        title,
+        category,
+        image
+      }
+    }`).then(setData).catch(() => {});
+  }, []);
+
+  const galleryImages = data?.images?.map((item, i) => ({
+    ...item,
+    _id: `sanity-${i}`,
+    url: item.image?.asset ? urlFor(item.image).width(600).url() : ''
+  })) || galleryData;
 
   const openLightbox = (index) => {
     setLightboxIndex(index);
@@ -33,8 +55,8 @@ export default function GalleryPage() {
   return (
     <div className="relative min-h-screen bg-[#050505] text-[#faf8f5] overflow-x-hidden">
       <SEO
-        title="Gallery"
-        description="Browse our curated collection of wedding, pre-wedding, engagement, maternity, baby, and kids studio photography in Nellore, Andhra Pradesh."
+        title={data?.seoTitle || 'Gallery'}
+        description={data?.seoDescription || "Browse our curated collection of wedding, pre-wedding, engagement, maternity, baby, and kids studio photography in Nellore, Andhra Pradesh."}
         url="https://theknotphotography.com/gallery"
         image="/images/portfolio1.jpg"
       />
@@ -54,14 +76,14 @@ export default function GalleryPage() {
 
           <div className="text-center">
             <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-              THE KNOT PHOTOGRAPHY
+              {data?.badge || 'THE KNOT PHOTOGRAPHY'}
             </span>
             <h1 className="font-cormorant text-4xl md:text-6xl text-cream-white font-light tracking-wide">
-              Our Gallery
+              {data?.heading || 'Our Gallery'}
             </h1>
             <div className="w-12 h-[1px] bg-gold-leaf mx-auto mt-4" />
             <p className="font-nunito text-sm text-cream-white/50 mt-6 max-w-lg mx-auto tracking-wider">
-              A curated collection of timeless moments captured through our lens
+              {data?.subheading || 'A curated collection of timeless moments captured through our lens'}
             </p>
           </div>
         </div>
@@ -84,7 +106,7 @@ export default function GalleryPage() {
               onClick={() => openLightbox(index)}
             >
               <img
-                src={item.url}
+                src={item.image?.asset ? urlFor(item.image).width(600).url() : item.url}
                 alt={item.title}
                 className="w-full h-auto object-cover md:group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-90 md:group-hover:brightness-100"
               />
