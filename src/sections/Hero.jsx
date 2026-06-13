@@ -32,9 +32,7 @@ export default function Hero() {
       id="home" 
       className="relative w-full max-sm:h-[50vh] h-dvh overflow-hidden flex flex-col justify-center items-center bg-[#050505]"
     >
-      {/* Background Cinematic Shading - reduced darkness */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/60 pointer-events-none z-10" />
-      <div className="absolute inset-0 bg-radial-gradient from-transparent to-[#050505]/60 pointer-events-none z-10" />
+
 
       {/* homepage.png stands here - hidden behind black on mobile until video ends */}
       <motion.img
