@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ZoomIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import Lightbox from '../components/Lightbox';
-import { getGallery, urlFor } from '../lib/sanity';
 
 const fallbackGallery = [
   { _id: 'g1', title: 'Love in the Wild', category: 'Pre-Wedding', url: '/images/prewedding.jpg' },
@@ -22,27 +21,8 @@ const fallbackGallery = [
 export default function GalleryPage() {
   const navigate = useNavigate();
   const [galleryImages, setGalleryImages] = useState(fallbackGallery);
-  const [loading, setLoading] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
-
-  useEffect(() => {
-    getGallery()
-      .then((images) => {
-        if (images && images.length > 0) {
-          setGalleryImages(
-            images.map((item) => ({
-              _id: item._id,
-              title: item.title || '',
-              category: item.category || '',
-              url: urlFor(item.image).width(800).url(),
-            }))
-          );
-        }
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
 
   const openLightbox = (index) => {
     setLightboxIndex(index);

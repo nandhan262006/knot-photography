@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { getBespokeServices, urlFor } from '../lib/sanity';
 
 const defaultServices = [
   { id: 0, title: "Engagement", image: "/images/engagement.jpg" },
@@ -19,8 +18,6 @@ export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState(0);
-  const [imageOverrides, setImageOverrides] = useState({});
-
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const dragOffsetRef = useRef(0);
@@ -29,24 +26,7 @@ export default function Services() {
 
   useEffect(() => { activeIndexRef.current = activeIndex; }, [activeIndex]);
 
-  useEffect(() => {
-    getBespokeServices()
-      .then((services) => {
-        const overrides = {};
-        services.forEach((s) => {
-          if (s.image) {
-            overrides[s.serviceName] = urlFor(s.image).url();
-          }
-        });
-        setImageOverrides(overrides);
-      })
-      .catch(() => {});
-  }, []);
-
-  const services = defaultServices.map((s) => ({
-    ...s,
-    image: imageOverrides[s.title] || s.image,
-  }));
+  const services = defaultServices;
 
   const getCardWidth = () =>
     window.innerWidth < 640 ? 280 : window.innerWidth < 768 ? 300 : 340;

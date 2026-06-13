@@ -1,4 +1,0 @@
-okay i will wht i need as sanity schemas 
-headless cms
-first schema should be
-1.about section WHERE 
