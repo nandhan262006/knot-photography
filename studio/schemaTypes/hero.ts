@@ -1,4 +1,6 @@
-export default {
+import {defineType} from 'sanity'
+
+export default defineType({
   name: 'hero',
   title: 'Hero Section',
   type: 'document',
@@ -30,4 +32,4 @@ export default {
       type: 'string',
     },
   ],
-};
+})

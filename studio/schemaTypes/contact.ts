@@ -1,4 +1,6 @@
-export default {
+import {defineType} from 'sanity'
+
+export default defineType({
   name: 'contact',
   title: 'Contact Section',
   type: 'document',
@@ -52,4 +54,4 @@ export default {
       ],
     },
   ],
-};
+})

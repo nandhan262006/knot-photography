@@ -1,4 +1,6 @@
-export default {
+import {defineType} from 'sanity'
+
+export default defineType({
   name: 'gallery',
   title: 'Gallery Page',
   type: 'document',
@@ -47,4 +49,4 @@ export default {
       ],
     },
   ],
-};
+})

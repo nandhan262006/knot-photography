@@ -1,4 +1,6 @@
-export default {
+import {defineType} from 'sanity'
+
+export default defineType({
   name: 'studioSettings',
   title: 'Kids Studio 3D Section',
   type: 'document',
@@ -73,4 +75,4 @@ export default {
       ],
     },
   ],
-};
+})

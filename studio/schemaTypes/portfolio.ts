@@ -1,4 +1,6 @@
-export default {
+import {defineType} from 'sanity'
+
+export default defineType({
   name: 'portfolio',
   title: 'Portfolio Section',
   type: 'document',
@@ -48,4 +50,4 @@ export default {
       ],
     },
   ],
-};
+})
