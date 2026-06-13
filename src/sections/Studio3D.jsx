@@ -67,7 +67,7 @@ export default function Studio3D() {
               {subheading}
             </span>
             <p className="font-nunito text-xs md:text-sm text-cream-white/50 tracking-wider mt-4 max-w-xl mx-auto">
-              <span className="text-gold-leaf font-semibold">100+ 3D Themes</span> &bull; Premium Props &bull; Memorable Moments
+              {tagline}
             </p>
             <a
               href={instagramUrl}
