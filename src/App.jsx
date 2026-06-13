@@ -30,7 +30,7 @@ const localBusinessSchema = {
   url: SITE_URL,
   telephone: '+91-XXXXXXXXXX',
   email: 'hello@theknotphotography.com',
-  description: 'Premium wedding photography studio based in Nellore, Andhra Pradesh, India. Specializing in wedding, pre-wedding, engagement, maternity, baby, and kids studio photography.',
+  description: 'Top photographers in Nellore, Andhra Pradesh. THE KNOT Photography is a premium photography studio specializing in wedding, pre-wedding, engagement, maternity, newborn baby, kids studio 3D, and fashion photography. Recognized as one of the best photographers in Nellore.',
   address: {
     "@type": "PostalAddress",
     addressLocality: "Nellore",
@@ -43,7 +43,8 @@ const localBusinessSchema = {
     longitude: 79.9865
   },
   sameAs: [
-    "https://www.instagram.com/theknotphotography"
+    "https://www.instagram.com/theknotphotography",
+    "https://www.instagram.com/kids_studio_3d_nellore"
   ],
   priceRange: "₹₹₹",
   openingHoursSpecification: {
@@ -54,6 +55,8 @@ const localBusinessSchema = {
   },
   areaServed: [
     { "@type": "City", name: "Nellore" },
+    { "@type": "City", name: "Gudur" },
+    { "@type": "City", name: "Kavali" },
     { "@type": "State", name: "Andhra Pradesh" }
   ],
   hasOfferCatalog: {
@@ -64,8 +67,8 @@ const localBusinessSchema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pre-Wedding Shoot" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Engagement Photography" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Maternity Photography" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Baby Photography" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Kids Studio Photography" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Newborn Baby Photography" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Kids Studio 3D Photography" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fashion Photography" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Outdoor Photography" } }
     ]
@@ -84,7 +87,7 @@ const websiteSchema = {
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
   name: 'THE KNOT Photography',
-  description: 'Premium wedding photography studio in Nellore',
+  description: 'Top photographers in Nellore - Premium wedding, maternity & kids studio photography in Andhra Pradesh',
   publisher: { "@id": `${SITE_URL}/#business` }
 };
 
@@ -109,8 +112,9 @@ function HomePage() {
         <Hero />
         <About />
         <Services />
-        <Studio3D />
+        
         <Portfolio />
+        <Studio3D />
         <Reviews />
         <Contact />
       </main>

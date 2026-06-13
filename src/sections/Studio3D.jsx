@@ -1,83 +1,16 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Studio3D() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState(0);
-
-  const isDraggingRef = useRef(false);
-  const startXRef = useRef(0);
-  const dragOffsetRef = useRef(0);
-  const activeIndexRef = useRef(activeIndex);
-
-  useEffect(() => { activeIndexRef.current = activeIndex; }, [activeIndex]);
-
-  const cards = [
-    { id: 0, image: "/images/kidsstudio1.png" },
-    { id: 1,  image: "/images/kidsstudio2.png" },
-    { id: 2, image: "/images/kidsstudio3.png" },
-    { id: 3, image: "/images/kidsstudio4.png" },
-    { id: 4, image: "/images/kidsstudio5.png" }
-  ];
-
-  const getCardWidth = () =>
-    window.innerWidth < 640 ? 280 : window.innerWidth < 768 ? 300 : 340;
-
-  const sensitivity = 0.55;
-
-  const snapTo = useCallback((fromIndex, direction) => {
-    const n = cards.length;
-    if (direction > 0) setActiveIndex((fromIndex + 1) % n);
-    else if (direction < 0) setActiveIndex((fromIndex - 1 + n) % n);
-  }, [cards.length]);
-
-  const handlePointerDown = useCallback((e) => {
-    startXRef.current = e.clientX;
-    dragOffsetRef.current = 0;
-    isDraggingRef.current = true;
-    setDragOffset(0);
-    setIsDragging(true);
-  }, []);
-
-  const handlePointerMove = useCallback((e) => {
-    if (!isDraggingRef.current) return;
-    const offset = e.clientX - startXRef.current;
-    dragOffsetRef.current = offset;
-    setDragOffset(offset);
-  }, []);
-
-  const handlePointerUp = useCallback(() => {
-    if (!isDraggingRef.current) return;
-    isDraggingRef.current = false;
-
-    const cw = getCardWidth();
-    const threshold = 30;
-    const off = dragOffsetRef.current;
-
-    if (Math.abs(off) > threshold) {
-      const raw = off / (cw * sensitivity);
-      let fullSwipes = Math.round(raw);
-      if (fullSwipes === 0) fullSwipes = off > 0 ? 1 : -1;
-
-      const curr = activeIndexRef.current;
-      const n = cards.length;
-      const newIdx = ((curr - fullSwipes) % n + n) % n;
-      setActiveIndex(newIdx);
-    }
-
-    setIsDragging(false);
-    setDragOffset(0);
-    dragOffsetRef.current = 0;
-  }, [cards.length]);
-
-  const fractionalIndex = isDragging
-    ? activeIndex - dragOffset / (getCardWidth() * sensitivity)
-    : activeIndex;
 
   return (
-    <section
-      id="studio3d"
+    <>
+      <SEO
+        title="Kids Studio 3D Nellore | Andhra's Largest Baby Studio"
+        description="Andhra's largest kids 3D studio in Nellore by THE KNOT Photography. 100+ 3D themes for maternity, newborn & kids photography. Top photographers in Nellore for baby and kids studio shoots."
+        keywords="kids studio nellore, kids 3d studio nellore, baby photography nellore, best baby studio nellore, kids photo shoot nellore, 3d themes for kids nellore, top photographers in nellore, best photographers in nellore, maternity photography nellore, newborn photography nellore, kids studio 3d, andhra pradesh kids studio"
+      />
+      <section
+        id="studio3d"
       className="relative w-full py-16 md:py-24 lg:py-32 bg-[#0c0c0c] overflow-hidden flex flex-col items-center justify-center border-b border-gold-leaf/5"
     >
       <div className="absolute top-[15%] left-[5%] w-80 h-80 rounded-full bg-rose-blush/10 blur-3xl pointer-events-none" />
@@ -86,14 +19,17 @@ export default function Studio3D() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full text-center relative z-10">
 
         <div className="mb-20">
-          <span className="font-nunito text-xs uppercase tracking-[0.3em] text-rose-blush font-semibold mb-3 block">
-            KID&apos;S STUDIO 3D NELLORE
+          <span className="font-nunito text-[10px] md:text-xs uppercase tracking-[0.3em] text-rose-blush/70 font-light mb-2 block">
+            for cute little stars we have
           </span>
           <h2 className="font-cormorant text-4xl md:text-5xl text-cream-white font-light tracking-wide">
             Andhra&apos;s Largest Baby Studio
           </h2>
+          <span className="font-nunito text-[10px] md:text-xs uppercase tracking-[0.3em] text-rose-blush font-semibold mt-4 mb-3 block">
+            KID&apos;S STUDIO 3D NELLORE
+          </span>
           <p className="font-nunito text-xs md:text-sm text-cream-white/50 tracking-wider mt-4 max-w-xl mx-auto">
-            📸 3D Themes | Premium Props | Memorable Moments
+            <span className="text-gold-leaf font-semibold">100+ 3D Themes</span> &bull; Premium Props &bull; Memorable Moments
           </p>
           <a
             href="https://www.instagram.com/kids_studio_3d_nellore"
@@ -109,109 +45,111 @@ export default function Studio3D() {
 
         <div className="relative w-full flex flex-col items-center justify-center">
 
-          <div
-            className="perspective-container relative w-full max-w-[420px] h-[400px] md:h-[480px] flex items-center justify-center select-none"
-            style={{ touchAction: 'pan-y' }}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerLeave={handlePointerUp}
-          >
-            <div className="card-deck-3d relative w-full h-full flex items-center justify-center">
-
-              {cards.map((card, index) => {
-                const cw = getCardWidth();
-                const diff = (index - fractionalIndex + cards.length) % cards.length;
-                let offset = diff;
-                if (offset > cards.length / 2) offset -= cards.length;
-
-                const isActive = !isDragging && offset === 0;
-                const absOffset = Math.abs(offset);
-
-                const rotateY = offset * 45;
-                const translateZ = isActive ? 100 : -100 - (absOffset * 70);
-                const translateX = offset * (cw * 0.5);
-                const opacity = isActive ? 1 : absOffset === 1 ? 0.6 : 0.1;
-                const scale = isActive ? 1.05 : 0.85;
-
-                return (
-                  <div
-                    key={card.id}
-                    className={`absolute w-[280px] sm:w-[300px] md:w-[340px] h-[380px] md:h-[430px] rounded-sm overflow-hidden border ${
-                      isActive ? 'border-gold-leaf/40 shadow-2xl' : 'border-gold-leaf/10 shadow-2xl'
-                    } ${isDragging ? '' : 'transition-all duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]'}`}
-                    style={{
-                      transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
-                      opacity: opacity,
-                      zIndex: 10 - absOffset,
-                      pointerEvents: 'none',
-                      backgroundColor: '#0c0c0c',
-                      boxShadow: isActive ? '0 0 40px rgba(212, 175, 55, 0.15), 0 0 80px rgba(212, 175, 55, 0.05)' : undefined,
-                    }}
-                  >
-                    <div className="absolute inset-0 w-full h-full">
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className={`w-full h-full object-cover ${
-                          isActive ? 'opacity-100 scale-105' : 'opacity-40'
-                        } ${isDragging ? '' : 'transition-all duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]'}`}
-                      />
-                      <div className={`absolute inset-0 ${
-                        isActive
-                          ? 'bg-gradient-to-t from-black/70 via-black/20 to-transparent'
-                          : 'bg-gradient-to-t from-black/80 via-black/40 to-transparent'
-                      } ${isDragging ? '' : 'transition-all duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]'}`} />
+          <div className="relative w-full max-w-6xl mx-auto">
+            <p className="font-cormorant text-xl md:text-2xl text-cream-white/50 font-light tracking-wide text-center mb-12 md:mb-16 italic">
+              Begin your beautiful journey with us — make it memorable forever
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 relative z-10 items-start">
+              {[
+                {
+                  title: "Maternity",
+                  desc: "Capturing the glow of anticipation",
+                  image: "/images/maternity.png",
+                },
+                {
+                  title: "Newborn",
+                  desc: "First moments, forever treasured",
+                  image: "/images/babyphotography.png",
+                },
+                {
+                  title: "Kids Studio",
+                  desc: "Playful frames for little stars",
+                  image: "/images/kidsstudio1.png",
+                },
+              ].map((item, i) => (
+                <div key={item.title} className="flex flex-col items-center relative">
+                  {i > 0 && (
+                    <div className="hidden md:flex absolute -left-3 top-[30%] -translate-y-1/2 z-20">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-80 drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]">
+                        <path d="M5 12h14M13 5l7 7-7 7"/>
+                      </svg>
                     </div>
-
-                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10 text-left">
-                      <h3 className={`font-cormorant text-2xl tracking-widest font-light ${
-                        isActive ? 'text-gold-leaf' : 'text-cream-white'
-                      } ${isDragging ? '' : 'transition-all duration-[650ms] ease-[cubic-bezier(0.22,1,0.36,1)]'}`}>
-                        {card.title}
+                  )}
+                  <div className="relative w-full max-w-[300px] aspect-[3/4] rounded-sm overflow-hidden border border-rose-blush/20 bg-[#111] group">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 text-left">
+                      <h3 className="font-cormorant text-xl md:text-2xl text-gold-leaf font-light tracking-wide">
+                        {item.title}
                       </h3>
                     </div>
                   </div>
-                );
-              })}
-
+                  <p className="font-cormorant text-lg md:text-xl text-cream-white/60 tracking-wide mt-5 text-center max-w-[280px] leading-relaxed">
+                    {item.desc}
+                  </p>
+                  {i < 2 && (
+                    <div className="md:hidden relative flex items-center justify-center py-3">
+                      <div className="h-10 w-[2px] bg-gradient-to-b from-gold-leaf via-gold-leaf/40 to-transparent" />
+                      <div className="absolute w-3 h-3 rounded-full bg-gold-leaf shadow-[0_0_12px_rgba(212,175,55,0.6)]" />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="hidden md:block absolute top-[30%] left-[5%] right-[5%] -translate-y-1/2 z-0">
+              <div className="relative w-full h-[2px] bg-gradient-to-r from-transparent via-gold-leaf/30 to-transparent">
+                <div className="absolute top-1/2 -translate-y-1/2 left-[15%] w-[70%] h-[2px] bg-gold-leaf/40" />
+                <div className="absolute top-1/2 -translate-y-1/2 left-[16%] w-4 h-4 rounded-full bg-gold-leaf shadow-[0_0_20px_rgba(212,175,55,0.6)]" />
+                <div className="absolute top-1/2 -translate-y-1/2 left-[50%] w-4 h-4 rounded-full bg-gold-leaf shadow-[0_0_20px_rgba(212,175,55,0.6)]" />
+                <div className="absolute top-1/2 -translate-y-1/2 left-[84%] w-4 h-4 rounded-full bg-gold-leaf shadow-[0_0_20px_rgba(212,175,55,0.6)]" />
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center space-x-6 mt-8 z-20">
-            <button
-              onClick={() => snapTo(activeIndex, -1)}
-              className="p-3 border border-gold-leaf/30 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 rounded-none focus:outline-none clickable"
-              aria-label="Previous card"
-            >
-              <ChevronLeft size={18} />
-            </button>
-
-            <div className="flex items-center space-x-2">
-              {cards.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`h-1.5 transition-all duration-300 ${
-                    idx === Math.round(fractionalIndex) ? 'w-8 bg-gold-leaf' : 'w-2 bg-cream-white/20'
-                  }`}
-                  aria-label={`Go to slide ${idx + 1}`}
-                />
-              ))}
+          <div className="mt-20 w-full text-center overflow-hidden">
+            <h3 className="font-cormorant text-3xl md:text-4xl text-cream-white font-light tracking-wide">
+              The Gear We Use
+            </h3>
+            <div className="mt-6 marquee-track relative">
+              <div className="marquee-content flex items-center gap-5 md:gap-6">
+                {[
+                  ...cameras,
+                  ...cameras,
+                ].map((cam, i) => (
+                  <div key={i} className="flex flex-col items-center flex-shrink-0">
+                    <div className="w-28 h-28 md:w-32 md:h-32 rounded-sm overflow-hidden border border-cream-white/10 bg-[#111] flex items-center justify-center p-3">
+                      <img
+                        src={cam.src}
+                        alt={cam.label}
+                        className="w-full h-full object-cover scale-110"
+                      />
+                    </div>
+                    <span className="font-nunito text-[10px] md:text-xs text-cream-white/50 tracking-wider mt-3 whitespace-nowrap">
+                      {cam.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            <button
-              onClick={() => snapTo(activeIndex, 1)}
-              className="p-3 border border-gold-leaf/30 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 rounded-none focus:outline-none clickable"
-              aria-label="Next card"
-            >
-              <ChevronRight size={18} />
-            </button>
           </div>
 
         </div>
 
       </div>
     </section>
+    </>
   );
 }
+
+const cameras = [
+  { src: "/images/sonya1.webp", label: "Sony A1" },
+  { src: "/images/sonya1-11.png", label: "Sony A1 II" },
+  { src: "/images/sonyfx3.png", label: "Sony FX3" },
+  { src: "/images/canonr1.png", label: "Canon R1" },
+  { src: "/images/canonr3.jpg", label: "Canon R3" },
+  { src: "/images/canonr5.png", label: "Canon R5" },
+];
