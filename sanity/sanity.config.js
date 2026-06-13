@@ -1,13 +1,13 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
+import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'KNOT PHOTOGAPHY',
+  title: 'THE KNOT PHOTOGRAPHY',
 
-  projectId: '8ach7il9',
+  projectId: '8vissldq',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
