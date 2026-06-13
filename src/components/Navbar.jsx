@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import { client } from '../lib/sanity';
 
 export default function Navbar() {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [settings, setSettings] = useState(null);
 
   const isHome = location.pathname === '/';
-
-  useEffect(() => {
-    client.fetch(`*[_type == "siteSettings"][0] {
-      whatsappNumber,
-      whatsappMessage
-    }`).then(setSettings).catch(() => {});
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,10 +20,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const whatsappUrl = settings?.whatsappNumber
-    ? `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(settings.whatsappMessage || "Hi! I'd like to book a 15-minute call to discuss photography services.")}`
-    : "https://wa.me/918500563003?text=Hi!%20I'd%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20photography%20services.";
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -90,7 +77,7 @@ export default function Navbar() {
         {/* Desktop CTA Booking Button */}
         <div className="hidden md:block">
           <a
-            href={whatsappUrl}
+            href="https://wa.me/918500563003?text=Hi!%20I'd%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20photography%20services."
             target="_blank"
             rel="noopener noreferrer"
             className="font-nunito text-xs uppercase tracking-widest border border-cream-white/20 hover:border-cream-white/50 px-6 py-2.5 rounded-none text-cream-white hover:bg-white/10 transition-all duration-300 font-medium clickable"
@@ -151,7 +138,7 @@ export default function Navbar() {
         )}
 
         <a
-          href={whatsappUrl}
+          href="https://wa.me/918500563003?text=Hi!%20I'd%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20photography%20services."
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setIsOpen(false)}

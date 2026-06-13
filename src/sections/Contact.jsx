@@ -1,46 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MapPin, MessageCircle } from 'lucide-react';
-import { client } from '../lib/sanity';
-
-function getIconForLabel(label) {
-  switch (label) {
-    case 'Call Us':
-      return <Phone className="w-5 h-5 text-gold-leaf" />;
-    case 'Instagram Journal':
-      return <svg className="w-5 h-5 text-gold-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" strokeWidth="3"/></svg>;
-    case 'Kids Studio 3D Nellore':
-      return <svg className="w-5 h-5 text-rose-blush" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5" strokeWidth="3"/></svg>;
-    case 'Our Studio':
-      return <MapPin className="w-5 h-5 text-gold-leaf" />;
-    default:
-      return <MapPin className="w-5 h-5 text-gold-leaf" />;
-  }
-}
 
 export default function Contact() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    client.fetch(`*[_type == "contact"][0] {
-      eyebrow,
-      headingLeft,
-      headingRight,
-      description,
-      ctaDesktop,
-      ctaMobile,
-      details[]{
-        label,
-        value,
-        href
-      }
-    }`).then(setData).catch(() => {});
-  }, []);
-
-  const contactDetails = data?.details?.map((d) => ({
-    ...d,
-    icon: getIconForLabel(d.label)
-  })) || [
+  const contactDetails = [
     {
       icon: <Phone className="w-5 h-5 text-gold-leaf" />,
       label: "Call Us",
@@ -82,14 +45,14 @@ export default function Contact() {
           
           <div>
             <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-              {data?.eyebrow || 'SECURE YOUR DATE'}
+              SECURE YOUR DATE
             </span>
             <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl text-cream-white font-light tracking-wide leading-tight mb-8">
-              {data?.headingLeft || "Let's Capture Your"}<br />
-              <span className="italic text-rose-dusty">{data?.headingRight || 'Once In A Lifetime.'}</span>
+              Let’s Capture Your<br />
+              <span className="italic text-rose-dusty">Once In A Lifetime.</span>
             </h2>
             <p className="font-nunito text-sm md:text-base text-cream-white/70 tracking-wider leading-relaxed max-w-xl mb-12">
-              {data?.description || "Popular wedding dates in Andhra Pradesh book up to a year in advance. Reach out today to check availability for your wedding, engagement, or pre-wedding shoot."}
+              Popular wedding dates in Andhra Pradesh book up to a year in advance. Reach out today to check availability for your wedding, engagement, or pre-wedding shoot.
             </p>
           </div>
 
@@ -127,7 +90,7 @@ export default function Contact() {
               className="btn-shimmer inline-flex items-center gap-3 font-nunito text-xs uppercase tracking-[0.25em] bg-gold-leaf text-black px-6 md:px-10 py-4.5 font-bold transition-all duration-300 shadow-xl shadow-gold-leaf/10 hover:shadow-gold-leaf/25 clickable whitespace-nowrap"
             >
               <MessageCircle size={18} className="fill-current shrink-0" />
-              <span className="hidden sm:inline">{data?.ctaDesktop || 'Book Your Date on WhatsApp'}</span><span className="sm:hidden">{data?.ctaMobile || 'Book Now'}</span>
+              <span className="hidden sm:inline">Book Your Date on WhatsApp</span><span className="sm:hidden">Book Now</span>
             </a>
           </div>
 

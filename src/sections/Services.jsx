@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { client, urlFor } from '../lib/sanity';
 
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -16,20 +15,7 @@ export default function Services() {
 
   useEffect(() => { activeIndexRef.current = activeIndex; }, [activeIndex]);
 
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    client.fetch(`*[_type == "services"][0] {
-      eyebrow,
-      heading,
-      serviceList[]{
-        title,
-        image
-      }
-    }`).then(setData).catch(() => {});
-  }, []);
-
-  const services = data?.serviceList?.map((s, i) => ({ ...s, id: i })) || [
+  const services = [
     { id: 0, title: "Engagement", image: "/images/engagement.jpg" },
     { id: 1, title: "Weddings", image: "/images/weddings.jpg" },
     { id: 2, title: "Post Wedding", image: "/images/postwedding.jpg" },
@@ -107,10 +93,10 @@ export default function Services() {
 
         <div className="mb-20">
           <span className="font-nunito text-xs uppercase tracking-[0.3em] text-gold-leaf font-semibold mb-3 block">
-            {data?.eyebrow || 'OUR OFFERINGS'}
+            OUR OFFERINGS
           </span>
           <h2 className="font-cormorant text-4xl md:text-5xl text-cream-white font-light tracking-wide">
-            {data?.heading || 'Bespoke Services'}
+            Bespoke Services
           </h2>
           <div className="w-12 h-[1px] bg-gold-leaf mx-auto mt-4" />
         </div>
@@ -160,7 +146,7 @@ export default function Services() {
                   >
                     <div className="absolute inset-0 w-full h-full">
                       <img
-                        src={service.image?.asset ? urlFor(service.image).width(400).url() : service.image}
+                        src={service.image}
                         alt={service.title}
                         className={`w-full h-full object-cover ${
                           isActive ? 'opacity-100 scale-105' : 'opacity-40'

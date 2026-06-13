@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Star } from 'lucide-react';
-import { client } from '../lib/sanity';
 
 const GoogleIcon = () => (
   <svg viewBox="0 0 48 48" className="w-5 h-5">
@@ -12,23 +11,7 @@ const GoogleIcon = () => (
 );
 
 export default function Reviews() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    client.fetch(`*[_type == "reviews"][0] {
-      rating,
-      reviewCount,
-      reviewList[]{
-        name,
-        role,
-        text,
-        rating,
-        date
-      }
-    }`).then(setData).catch(() => {});
-  }, []);
-
-  const googleReviews = data?.reviewList?.map((r, i) => ({ ...r, id: i })) || [
+  const googleReviews = [
     {
       id: 1,
       name: "Sireesha Reddy",
@@ -84,7 +67,7 @@ export default function Reviews() {
           </span>
         </div>
         <h2 className="text-5xl md:text-6xl font-bold text-[#4285F4] tracking-tight font-serif-display">
-          {data?.rating || '4.8'}
+          4.8
         </h2>
         <div className="flex items-center justify-center gap-1 mt-2">
           {[...Array(5)].map((_, i) => (
@@ -92,7 +75,7 @@ export default function Reviews() {
           ))}
         </div>
         <p className="font-nunito text-sm text-white/50 tracking-wider mt-3">
-          Based on <span className="text-white/80 font-semibold">{data?.reviewCount || '1K+'}</span>
+          Based on <span className="text-white/80 font-semibold">1K+ reviews</span>
         </p>
       </div>
 

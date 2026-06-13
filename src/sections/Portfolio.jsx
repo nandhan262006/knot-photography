@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Lightbox from '../components/Lightbox';
 import { ZoomIn, ArrowRight } from 'lucide-react';
-import { client, urlFor } from '../lib/sanity';
 
 const portfolioData = [
   { _id: 'p1', title: 'Eternal Vows', category: 'Wedding', url: '/images/gallery3.jpeg' },
@@ -22,33 +21,13 @@ const portfolioData = [
 
 export default function Portfolio() {
   const navigate = useNavigate();
-  const [data, setData] = useState(null);
+  const [items, setItems] = useState(portfolioData);
   const [loading, setLoading] = useState(false);
   const [activeFilter, setActiveFilter] = useState('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  useEffect(() => {
-    client.fetch(`*[_type == "portfolio"][0] {
-      eyebrow,
-      headingPrefix,
-      headingSuffix,
-      buttonText,
-      categories,
-      items[]{
-        title,
-        category,
-        image
-      }
-    }`).then(setData).catch(() => {});
-  }, []);
-
-  const items = data?.items?.map((item, i) => ({
-    ...item,
-    _id: `sanity-${i}`,
-    url: item.image?.asset ? urlFor(item.image).width(600).url() : ''
-  })) || portfolioData;
-  const tags = data?.categories || ['All', 'Wedding', 'Pre-Wedding', 'Reception', 'Engagement'];
+  const tags = ['All', 'Wedding', 'Pre-Wedding', 'Reception', 'Engagement'];
 
   const galleryItems = items;
 
@@ -74,12 +53,12 @@ export default function Portfolio() {
           <div className="flex items-center justify-center gap-3 mb-4">
             <span className="w-8 h-[1px] bg-gold-leaf/40" />
             <span className="font-nunito text-[10px] uppercase tracking-[0.4em] text-gold-leaf font-semibold">
-              {data?.eyebrow || 'VISUAL JOURNAL'}
+              VISUAL JOURNAL
             </span>
             <span className="w-8 h-[1px] bg-gold-leaf/40" />
           </div>
           <h2 className="font-cormorant text-4xl md:text-6xl text-cream-white font-light tracking-wide">
-            {data?.headingPrefix || 'Selected'} <span className="text-gold-leaf italic font-normal">{data?.headingSuffix || 'Works'}</span>
+            Selected <span className="text-gold-leaf italic font-normal">Works</span>
           </h2>
           <div className="flex items-center justify-center gap-3 mt-5">
             <span className="w-12 h-[1px] bg-gold-leaf" />
@@ -111,7 +90,7 @@ export default function Portfolio() {
             onClick={() => navigate('/gallery')}
             className="group flex items-center gap-3 font-nunito text-xs uppercase tracking-[0.25em] border border-gold-leaf/40 hover:border-gold-leaf px-8 py-3.5 text-gold-leaf hover:bg-gold-leaf hover:text-black transition-all duration-300 clickable"
           >
-            {data?.buttonText || 'View My Gallery'}
+            View My Gallery
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
           </button>
         </div>
@@ -136,7 +115,7 @@ export default function Portfolio() {
               >
                 {/* Image */}
                 <img 
-                  src={item.image?.asset ? urlFor(item.image).width(600).url() : item.url} 
+                  src={item.url} 
                   alt={item.title} 
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700 ease-out filter brightness-90 group-hover:brightness-100"
                 />

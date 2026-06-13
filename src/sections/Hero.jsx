@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { client } from '../lib/sanity';
 
 export default function Hero() {
   const videoRef = useRef(null);
@@ -19,16 +18,6 @@ export default function Hero() {
     video.play().catch(() => {});
 
     return () => video.removeEventListener('play', handlePlay);
-  }, []);
-
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    client.fetch(`*[_type == "hero"][0] {
-      heading,
-      ctaText,
-      scrollLabel
-    }`).then(setData).catch(() => {});
   }, []);
 
   const handleEnded = useCallback(() => {
@@ -54,7 +43,7 @@ export default function Hero() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 sm:gap-3 font-nunito text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.25em] bg-black text-cream-white px-5 sm:px-8 py-3 sm:py-4 font-bold transition-all duration-300 border border-cream-white/20 hover:bg-[#111] clickable whitespace-nowrap"
         >
-          {data?.ctaText || 'Book a 15 Min Call'}
+          Book a 15 Min Call
         </a>
       </div>
       )}
@@ -102,7 +91,7 @@ export default function Hero() {
         transition={{ repeat: Infinity, repeatType: "reverse", duration: 1.5, delay: 2.0 }}
         className="absolute bottom-10 z-20 text-cream-white/50 flex flex-col items-center pointer-events-none"
       >
-        <span className="font-nunito text-[10px] sm:text-[9px] uppercase tracking-[0.3em] mb-1 font-light">{data?.scrollLabel || 'Scroll Down'}</span>
+        <span className="font-nunito text-[10px] sm:text-[9px] uppercase tracking-[0.3em] mb-1 font-light">Scroll Down</span>
         <ChevronDown size={14} className="text-gold-leaf" />
       </motion.div>
     </section>
