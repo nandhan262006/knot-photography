@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'THE KNOT PHOTOGRAPHY',
 
-  projectId: '8vissldq',
+  projectId: 'cdn6p9tk',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
