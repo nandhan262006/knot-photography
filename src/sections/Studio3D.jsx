@@ -11,9 +11,8 @@ const query = `*[_type == "studioSettings"][0]{
   instagramLabel,
   journeyText,
   storyCards[]{
-    title,
-    description,
-    image
+    image,
+    order
   },
   gearHeading,
   cameras[]{
@@ -36,7 +35,24 @@ export default function Studio3D() {
   const instagramUrl = data?.instagramUrl || 'https://www.instagram.com/kids_studio_3d_nellore';
   const instagramLabel = data?.instagramLabel || 'Follow on Instagram';
   const journeyText = data?.journeyText || 'Begin your beautiful journey with us — make it memorable forever';
-  const storyCards = data?.storyCards || [];
+  const storyConfig = [
+    { order: 1, title: 'Maternity', description: 'Capturing the glow of motherhood — celebrate the journey that began with love.' },
+    { order: 2, title: 'Newborn', description: 'Tiny fingers, tiny toes — preserving the purest moments of your little miracle.' },
+    { order: 3, title: 'Little Star', description: 'Personality shines bright — fun, candid, and full of wonder in every frame.' },
+  ];
+  const rawCards = data?.storyCards || [];
+
+  // support both new structure { image, order } and legacy { title, description, image }
+  const hasOrder = rawCards.some(c => c.order != null);
+  const storyCards = storyConfig.map((config, index) => {
+    let match;
+    if (hasOrder) {
+      match = rawCards.find(c => c.order === config.order);
+    } else {
+      match = rawCards[index];
+    }
+    return { ...config, image: match?.image || null };
+  });
   const gearHeading = data?.gearHeading || 'The Gear We Use';
   const cameras = data?.cameras || [];
 
@@ -88,8 +104,8 @@ export default function Studio3D() {
                 {journeyText}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 relative z-10 items-start">
-                {storyCards.map((item, i) => (
-                  <div key={item.title || i} className="flex flex-col items-center relative">
+                  {storyCards.map((item, i) => (
+                  <div key={item.order} className="flex flex-col items-center relative">
                     {i > 0 && (
                       <div className="hidden md:flex absolute -left-3 top-[30%] -translate-y-1/2 z-20">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4af37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-80 drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]">
