@@ -36,12 +36,12 @@ export default function Hero() {
 
       {/* CTA Overlay - only after video ends */}
       {videoEnded && (
-      <div className="absolute bottom-24 md:bottom-32 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4 w-full px-6">
+      <div className="absolute bottom-12 md:bottom-32 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4 w-full px-6">
         <a
           href="https://wa.me/918500563003?text=Hi!%20I'd%20like%20to%20book%20a%2015-minute%20call%20to%20discuss%20photography%20services."
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 sm:gap-3 font-nunito text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.25em] bg-black text-cream-white px-5 sm:px-8 py-3 sm:py-4 font-bold transition-all duration-300 border border-cream-white/20 hover:bg-[#111] clickable whitespace-nowrap"
+          className="inline-flex items-center gap-2 sm:gap-3 font-nunito text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.25em] bg-black text-cream-white px-5 sm:px-8 py-3 sm:py-4 font-bold transition-all duration-300 sm:border sm:border-cream-white/20 hover:bg-[#111] clickable whitespace-nowrap"
         >
           Book a 15 Min Call
         </a>
