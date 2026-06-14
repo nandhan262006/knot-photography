@@ -11,7 +11,7 @@ const defaultStoryCards = [
     order: 2,
     title: 'Newborn',
     description: 'Tiny fingers, tiny toes — preserving the purest moments of your little miracle.',
-    image: '/images/kidsstudio1.png',
+    image: '/images/babyphotography.png',
   },
   {
     order: 3,
