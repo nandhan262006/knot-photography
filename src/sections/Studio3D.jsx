@@ -22,10 +22,10 @@ const defaultStoryCards = [
 ];
 
 const cameras = [
-  { name: 'Canon EOS R1', image: '/images/canonr1.png' },
-  { name: 'Canon EOS R3', image: '/images/canonr3.jpg' },
-  { name: 'Canon EOS R5', image: '/images/canonr5.png' },
-  { name: 'Sony FX3', image: '/images/sonyfx3.png' },
+  { name: 'Canon EOS R1', image: '/images/canonr1.webp' },
+  { name: 'Canon EOS R3', image: '/images/canonr3.webp' },
+  { name: 'Canon EOS R5', image: '/images/canonr5.webp' },
+  { name: 'Sony FX3', image: '/images/sonyfx3.webp' },
   { name: 'Sony A1', image: '/images/sonya1.webp' },
 ];
 
