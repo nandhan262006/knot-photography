@@ -6,18 +6,18 @@ import SEO from '../components/SEO';
 import Lightbox from '../components/Lightbox';
 
 const fallbackGallery = [
-  { _id: 'g1', title: 'Love in the Wild', category: 'Pre-Wedding', url: '/images/gallery3.jpeg' },
-  { _id: 'g2', title: 'Pre-Wedding Magic', category: 'Pre-Wedding', url: '/images/gallery4.jpg' },
-  { _id: 'g3', title: 'Happily Ever After', category: 'Wedding', url: '/images/gallery5.jpeg' },
-  { _id: 'g4', title: 'The Big Day', category: 'Wedding', url: '/images/gallery6.jpeg' },
-  { _id: 'g5', title: 'Fashion Story', category: 'Fashion', url: '/images/gallery7.jpeg' },
-  { _id: 'g6', title: 'Precious Moments', category: 'Maternity', url: '/images/gallery8.jpg' },
-  { _id: 'g7', title: 'Tiny Treasures', category: 'Baby', url: '/images/gallery9.jpg' },
-  { _id: 'g8', title: 'Nature Canvas', category: 'Pre-Wedding', url: '/images/gallery10.jpg' },
-  { _id: 'g9', title: 'Eternal Vows', category: 'Wedding', url: '/images/weddings.jpg' },
-  { _id: 'g10', title: 'Golden Hour', category: 'Fashion', url: '/images/fashion.jpg' },
-  { _id: 'g11', title: 'New Beginnings', category: 'Maternity', url: '/images/maternity.png' },
-  { _id: 'g12', title: 'Little Stars', category: 'Kids Studio', url: '/images/kidsstudio1.png' },
+  { _id: 'g1', title: 'Love in the Wild', category: 'Pre-Wedding', url: '/images/gallery3.webp' },
+  { _id: 'g2', title: 'Pre-Wedding Magic', category: 'Pre-Wedding', url: '/images/gallery4.webp' },
+  { _id: 'g3', title: 'Happily Ever After', category: 'Wedding', url: '/images/gallery5.webp' },
+  { _id: 'g4', title: 'The Big Day', category: 'Wedding', url: '/images/gallery6.webp' },
+  { _id: 'g5', title: 'Fashion Story', category: 'Fashion', url: '/images/gallery7.webp' },
+  { _id: 'g6', title: 'Precious Moments', category: 'Maternity', url: '/images/gallery8.webp' },
+  { _id: 'g7', title: 'Tiny Treasures', category: 'Baby', url: '/images/gallery9.webp' },
+  { _id: 'g8', title: 'Nature Canvas', category: 'Pre-Wedding', url: '/images/gallery10.webp' },
+  { _id: 'g9', title: 'Eternal Vows', category: 'Wedding', url: '/images/weddings.webp' },
+  { _id: 'g10', title: 'Golden Hour', category: 'Fashion', url: '/images/fashion.webp' },
+  { _id: 'g11', title: 'New Beginnings', category: 'Maternity', url: '/images/maternity.webp' },
+  { _id: 'g12', title: 'Little Stars', category: 'Kids Studio', url: '/images/kidsstudio1.webp' },
 ];
 
 export default function GalleryPage() {
@@ -37,7 +37,7 @@ export default function GalleryPage() {
         title="Gallery"
         description="Browse our curated collection of wedding, pre-wedding, engagement, maternity, baby, and kids studio photography in Nellore, Andhra Pradesh."
         url="https://theknotphotography.com/gallery"
-        image="/images/portfolio1.jpg"
+        image="/images/portfolio1.webp"
       />
       {/* Header */}
       <div className="relative w-full py-20 md:py-28 bg-[#050505] border-b border-gold-leaf/5">
