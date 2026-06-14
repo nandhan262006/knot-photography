@@ -26,7 +26,8 @@ const cameras = [
   { name: 'Canon EOS R3', image: '/images/canonr3.webp' },
   { name: 'Canon EOS R5', image: '/images/canonr5.webp' },
   { name: 'Sony FX3', image: '/images/sonyfx3.webp' },
-  { name: 'Sony A1', image: '/images/sonya1.webp' },
+  { name: 'Sony A1-11', image: '/images/sonya1.webp' },
+  { name: 'Sony A1', image: '/images/sonya12.webp' },
 ];
 
 export default function Studio3D() {
