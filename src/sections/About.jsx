@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Star, Award, Heart } from 'lucide-react';
 
@@ -62,57 +62,19 @@ function PortableText({ blocks }) {
 }
 
 export default function About() {
-  const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
   const isAboutInView = useInView(containerRef, { once: true, amount: 0.2 });
 
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-    const x = (clientX / innerWidth) - 0.5;
-    const y = (clientY / innerHeight) - 0.5;
-    setParallax({
-      x: x * 20,
-      y: y * 20,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setParallax({ x: 0, y: 0 });
-  };
-
-  const heading = aboutData?.heading || "WELCOME TO KNOT PHOTOGRAPHY";
-  const subtitle = aboutData?.subtitle || "Some Moments Fade.\nYours Deserve to Live Forever.";
+  const heading = "WELCOME TO KNOT PHOTOGRAPHY";
+  const subtitle = "Some Moments Fade.\nYours Deserve to Live Forever.";
   const subtitleParts = subtitle.split('\n');
 
-  const stats = [
-    {
-      ...defaultStats[0],
-      ...(aboutData?.rating?.value ? { value: aboutData.rating.value } : {}),
-      ...(aboutData?.rating?.label ? { label: aboutData.rating.label } : {}),
-      ...(aboutData?.rating?.desc ? { desc: aboutData.rating.desc } : {}),
-    },
-    {
-      ...defaultStats[1],
-      ...(aboutData?.reviews?.value ? { value: aboutData.reviews.value } : {}),
-      ...(aboutData?.reviews?.label ? { label: aboutData.reviews.label } : {}),
-      ...(aboutData?.reviews?.desc ? { desc: aboutData.reviews.desc } : {}),
-    },
-    {
-      ...defaultStats[2],
-      ...(aboutData?.weddings?.value ? { value: aboutData.weddings.value } : {}),
-      ...(aboutData?.weddings?.label ? { label: aboutData.weddings.label } : {}),
-      ...(aboutData?.weddings?.desc ? { desc: aboutData.weddings.desc } : {}),
-    },
-  ];
+  const stats = defaultStats;
 
   return (
     <section 
       id="about" 
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       className="relative w-full min-h-screen py-16 md:py-24 lg:py-32 bg-[#0c0c0c] flex items-center overflow-hidden border-t border-b border-gold-leaf/5"
     >
       <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
@@ -142,7 +104,7 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6 text-cream-white/70 font-nunito text-sm md:text-base leading-relaxed tracking-wider max-w-2xl"
           >
-            <PortableText blocks={aboutData?.paragraphs} />
+            <PortableText blocks={null} />
           </motion.div>
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8">

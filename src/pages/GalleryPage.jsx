@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ZoomIn } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ const fallbackGallery = [
 
 export default function GalleryPage() {
   const navigate = useNavigate();
-  const [galleryImages, setGalleryImages] = useState(fallbackGallery);
+  const [galleryImages] = useState(fallbackGallery);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 

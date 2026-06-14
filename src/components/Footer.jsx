@@ -1,4 +1,3 @@
-import React from 'react';
 import { MessageCircle, MapPin } from 'lucide-react';
 
 const InstagramIcon = ({ size = 20 }) => (

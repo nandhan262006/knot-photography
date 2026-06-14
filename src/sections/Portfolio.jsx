@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Lightbox from '../components/Lightbox';
@@ -21,15 +21,13 @@ const portfolioData = [
 
 export default function Portfolio() {
   const navigate = useNavigate();
-  const [items, setItems] = useState(portfolioData);
-  const [loading, setLoading] = useState(false);
   const [activeFilter, setActiveFilter] = useState('All');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const tags = ['All', 'Wedding', 'Pre-Wedding', 'Reception', 'Engagement'];
 
-  const galleryItems = items;
+  const galleryItems = portfolioData;
 
   const filteredItems = activeFilter === 'All' 
     ? galleryItems 
