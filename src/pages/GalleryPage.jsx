@@ -6,16 +6,18 @@ import SEO from '../components/SEO';
 import Lightbox from '../components/Lightbox';
 
 const fallbackGallery = [
-  { _id: 'g1', title: 'Love in the Wild', category: 'Pre-Wedding', url: '/images/prewedding.jpg' },
-  { _id: 'g2', title: 'Pre-Wedding Magic', category: 'Pre-Wedding', url: '/images/PREWEDDING.jpeg' },
-  { _id: 'g3', title: 'Happily Ever After', category: 'Wedding', url: '/images/postwedding.jpg' },
-  { _id: 'g4', title: 'The Big Day', category: 'Wedding', url: '/images/weddings.jpg' },
-  { _id: 'g5', title: 'Fashion Story', category: 'Fashion', url: '/images/fashion.jpg' },
-  { _id: 'g6', title: 'Precious Moments', category: 'Maternity', url: '/images/maternity.png' },
-  { _id: 'g7', title: 'Tiny Treasures', category: 'Baby', url: '/images/babyphotography.png' },
-  { _id: 'g8', title: 'Nature Canvas', category: 'Pre-Wedding', url: '/images/outdoor.jpg' },
-  { _id: 'g9', title: 'Little Stars', category: 'Kids Studio', url: '/images/kidsstudio1.png' },
-  { _id: 'g10', title: 'Kids Studio Magic', category: 'Kids Studio', url: '/images/kidsstudio2.png' },
+  { _id: 'g1', title: 'Love in the Wild', category: 'Pre-Wedding', url: '/images/gallery3.jpeg' },
+  { _id: 'g2', title: 'Pre-Wedding Magic', category: 'Pre-Wedding', url: '/images/gallery4.jpg' },
+  { _id: 'g3', title: 'Happily Ever After', category: 'Wedding', url: '/images/gallery5.jpeg' },
+  { _id: 'g4', title: 'The Big Day', category: 'Wedding', url: '/images/gallery6.jpeg' },
+  { _id: 'g5', title: 'Fashion Story', category: 'Fashion', url: '/images/gallery7.jpeg' },
+  { _id: 'g6', title: 'Precious Moments', category: 'Maternity', url: '/images/gallery8.jpg' },
+  { _id: 'g7', title: 'Tiny Treasures', category: 'Baby', url: '/images/gallery9.jpg' },
+  { _id: 'g8', title: 'Nature Canvas', category: 'Pre-Wedding', url: '/images/gallery10.jpg' },
+  { _id: 'g9', title: 'Eternal Vows', category: 'Wedding', url: '/images/weddings.jpg' },
+  { _id: 'g10', title: 'Golden Hour', category: 'Fashion', url: '/images/fashion.jpg' },
+  { _id: 'g11', title: 'New Beginnings', category: 'Maternity', url: '/images/maternity.png' },
+  { _id: 'g12', title: 'Little Stars', category: 'Kids Studio', url: '/images/kidsstudio1.png' },
 ];
 
 export default function GalleryPage() {
