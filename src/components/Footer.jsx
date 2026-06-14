@@ -27,7 +27,7 @@ export default function Footer() {
         
         {/* Brand logo */}
         <img
-          src="/images/knotlogo2025.webp"
+          src="/images/knotlogo2025.png"
           alt="THE KNOT"
           className="h-10 w-auto object-contain opacity-80"
         />

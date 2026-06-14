@@ -54,7 +54,7 @@ export default function Hero() {
         animate={{ opacity: videoEnded ? 1 : 0 }}
         transition={{ duration: 0.6 }}
         className="absolute inset-0 w-full h-full object-cover z-0 sm:opacity-100"
-        src="/images/homepage.webp"
+        src="/images/homepage.png"
         alt="THE KNOT Photography"
       />
 

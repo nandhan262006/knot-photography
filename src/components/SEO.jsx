@@ -4,7 +4,7 @@ const SITE_URL = 'https://theknotphotography.com';
 const SITE_NAME = 'THE KNOT Photography';
 const DEFAULT_TITLE = 'THE KNOT Photography | Top Wedding Photographers in Nellore, Andhra Pradesh';
 const DEFAULT_DESC = 'THE KNOT Photography - Top photographers in Nellore offering premium wedding, maternity, newborn & kids studio photography. Andhra Pradesh\'s best photography studio for cinematic wedding films, pre-wedding shoots, and 3D kids studio. Book your session today!';
-const DEFAULT_IMAGE = '/images/homepage.webp';
+const DEFAULT_IMAGE = '/images/homepage.png';
 const DEFAULT_KEYWORDS = 'top photographers in nellore, best photographers in nellore, wedding photography nellore, wedding photographer nellore, the knot photography, premium photography studio nellore, pre-wedding shoot nellore, bridal photography nellore, baby photography nellore, maternity shoot nellore, kids studio nellore, 3d studio nellore, best wedding photographers nellore, top photo graphers in nellore';
 
 export default function SEO({ title, description, image, url, type = 'website', keywords, jsonLd }) {

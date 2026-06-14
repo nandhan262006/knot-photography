@@ -26,7 +26,7 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": `${SITE_URL}/#business`,
   name: 'THE KNOT Photography',
-  image: `${SITE_URL}/images/KNOT LOGO 2025.webp`,
+  image: `${SITE_URL}/images/KNOT LOGO 2025.png`,
   url: SITE_URL,
   telephone: '+91-XXXXXXXXXX',
   email: 'hello@theknotphotography.com',
