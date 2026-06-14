@@ -2,8 +2,6 @@ export default {
   name: 'gallery',
   title: 'Gallery Image',
   type: 'document',
-  description:
-    'Upload a gallery image with an order number. If the order is greater than the current number of gallery photos it will be appended. If the order is less than or equal to the existing count, it replaces the image at that position.',
   fields: [
     {
       name: 'image',
@@ -16,27 +14,33 @@ export default {
       name: 'order',
       title: 'Display Order',
       type: 'number',
-      description:
-        'Order in the gallery (1-based). Greater than total count → append. Less than or equal to total count → replace.',
+      description: 'Determines the display position in the gallery (lower numbers appear first).',
       validation: (Rule) => Rule.required().min(1).integer(),
     },
     {
       name: 'title',
       title: 'Image Title',
       type: 'string',
-      description: 'Optional title for the image (e.g. "Love in the Wild").',
     },
     {
       name: 'category',
       title: 'Category',
       type: 'string',
-      description:
-        'Optional category (e.g. Pre-Wedding, Wedding, Fashion, Maternity, Baby, Kids Studio).',
+      options: {
+        list: [
+          {title: 'Pre-Wedding', value: 'Pre-Wedding'},
+          {title: 'Wedding', value: 'Wedding'},
+          {title: 'Fashion', value: 'Fashion'},
+          {title: 'Maternity', value: 'Maternity'},
+          {title: 'Baby', value: 'Baby'},
+          {title: 'Kids Studio', value: 'Kids Studio'},
+        ],
+      },
     },
   ],
   orderings: [
     {
-      title: 'Order',
+      title: 'Display Order',
       name: 'orderAsc',
       by: [{field: 'order', direction: 'asc'}],
     },

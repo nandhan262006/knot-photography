@@ -29,16 +29,14 @@ export default function GalleryPage() {
   useEffect(() => {
     getGallery()
       .then((images) => {
-        if (images && images.length > 0) {
-          setGalleryImages(
-            images.map((item) => ({
-              _id: item._id,
-              title: item.title || '',
-              category: item.category || '',
-              url: urlFor(item.image).width(800).url(),
-            }))
-          );
-        }
+        setGalleryImages(
+          (images || []).map((item) => ({
+            _id: item._id,
+            title: item.title || '',
+            category: item.category || '',
+            url: urlFor(item.image).width(800).url(),
+          }))
+        );
         setLoading(false);
       })
       .catch(() => setLoading(false));
