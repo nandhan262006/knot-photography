@@ -39,7 +39,7 @@ export default function Navbar() {
         {/* Brand Logo */}
         <a href="#home" className="flex items-center group clickable">
           <img
-            src="/images/navlog.webp"
+            src="/images/navlog.png"
             alt="THE KNOT"
             className="h-16 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
           />
@@ -107,7 +107,7 @@ export default function Navbar() {
         </button>
 
         <img
-          src="/images/navlog.webp"
+          src="/images/navlog.png"
           alt="THE KNOT"
           className="h-20 w-auto object-contain mb-4 opacity-90"
         />

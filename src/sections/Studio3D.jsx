@@ -5,27 +5,27 @@ const defaultStoryCards = [
     order: 1,
     title: 'Maternity',
     description: 'Capturing the glow of motherhood — celebrate the journey that began with love.',
-    image: '/images/maternity.webp',
+    image: '/images/maternity.png',
   },
   {
     order: 2,
     title: 'Newborn',
     description: 'Tiny fingers, tiny toes — preserving the purest moments of your little miracle.',
-    image: '/images/babyphotography.webp',
+    image: '/images/kidsstudio1.png',
   },
   {
     order: 3,
     title: 'Little Star',
     description: 'Personality shines bright — fun, candid, and full of wonder in every frame.',
-    image: '/images/kidsstudio2.webp',
+    image: '/images/kidsstudio2.png',
   },
 ];
 
 const cameras = [
-  { name: 'Canon EOS R1', image: '/images/canonr1.webp' },
-  { name: 'Canon EOS R3', image: '/images/canonr3.webp' },
-  { name: 'Canon EOS R5', image: '/images/canonr5.webp' },
-  { name: 'Sony FX3', image: '/images/sonyfx3.webp' },
+  { name: 'Canon EOS R1', image: '/images/canonr1.png' },
+  { name: 'Canon EOS R3', image: '/images/canonr3.jpg' },
+  { name: 'Canon EOS R5', image: '/images/canonr5.png' },
+  { name: 'Sony FX3', image: '/images/sonyfx3.png' },
   { name: 'Sony A1', image: '/images/sonya1.webp' },
 ];
 

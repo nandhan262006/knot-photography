@@ -28,7 +28,3 @@ dist-ssr
 
 # Root-level large source video assets (not web-optimized)
 /*.mp4
-
-# External projects nested in images
-public/images/hola-beauty-nextjs/
-public/images/hola-beauty-parlour/

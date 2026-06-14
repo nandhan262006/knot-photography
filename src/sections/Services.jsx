@@ -2,15 +2,15 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const defaultServices = [
-  { id: 0, title: "Engagement", image: "/images/engagement.webp" },
-  { id: 1, title: "Weddings", image: "/images/weddings.webp" },
-  { id: 2, title: "Post Wedding", image: "/images/postwedding.webp" },
-  { id: 3, title: "Pre Wedding", image: "/images/prewedding.webp" },
-  { id: 4, title: "Fashion Photography", image: "/images/fashion.webp" },
-  { id: 5, title: "Outdoor Photography", image: "/images/outdoor.webp" },
-  { id: 6, title: "Kids Studio", image: "/images/kidsstudio1.webp" },
-  { id: 7, title: "Baby Photography", image: "/images/babyphotography.webp" },
-  { id: 8, title: "Maternity Shoot", image: "/images/maternity.webp" },
+  { id: 0, title: "Engagement", image: "/images/engagement.jpg" },
+  { id: 1, title: "Weddings", image: "/images/weddings.jpg" },
+  { id: 2, title: "Post Wedding", image: "/images/postwedding.jpg" },
+  { id: 3, title: "Pre Wedding", image: "/images/prewedding.jpg" },
+  { id: 4, title: "Fashion Photography", image: "/images/fashion.jpg" },
+  { id: 5, title: "Outdoor Photography", image: "/images/outdoor.jpg" },
+  { id: 6, title: "Kids Studio", image: "/images/kidsstudio1.png" },
+  { id: 7, title: "Baby Photography", image: "/images/babyphotography.png" },
+  { id: 8, title: "Maternity Shoot", image: "/images/maternity.png" },
 ];
 
 export default function Services() {

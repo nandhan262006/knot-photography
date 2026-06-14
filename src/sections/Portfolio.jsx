@@ -5,17 +5,17 @@ import Lightbox from '../components/Lightbox';
 import { ZoomIn, ArrowRight } from 'lucide-react';
 
 const portfolioData = [
-  { _id: 'p1', title: 'Eternal Vows', category: 'Wedding', url: '/images/gallery3.webp' },
-  { _id: 'p2', title: 'Sunset Romance', category: 'Pre-Wedding', url: '/images/gallery4.webp' },
-  { _id: 'p3', title: 'Golden Celebration', category: 'Reception', url: '/images/gallery5.webp' },
-  { _id: 'p4', title: 'Promise of Forever', category: 'Engagement', url: '/images/gallery6.webp' },
-  { _id: 'p5', title: 'Sacred Union', category: 'Wedding', url: '/images/gallery7.webp' },
-  { _id: 'p6', title: 'Together Forever', category: 'Pre-Wedding', url: '/images/gallery8.webp' },
-  { _id: 'p7', title: 'Grand Affair', category: 'Reception', url: '/images/gallery9.webp' },
-  { _id: 'p8', title: 'Blissful Beginnings', category: 'Engagement', url: '/images/gallery10.webp' },
-  { _id: 'p9', title: 'Bridal Elegance', category: 'Wedding', url: '/images/portfolio1.webp' },
-  { _id: 'p10', title: 'Engagement Glow', category: 'Engagement', url: '/images/engagement.webp' },
-  { _id: 'p11', title: 'Engagement Glow', category: 'Engagement', url: '/images/portfolio.webp' },
+  { _id: 'p1', title: 'Eternal Vows', category: 'Wedding', url: '/images/gallery3.jpeg' },
+  { _id: 'p2', title: 'Sunset Romance', category: 'Pre-Wedding', url: '/images/gallery4.jpg' },
+  { _id: 'p3', title: 'Golden Celebration', category: 'Reception', url: '/images/gallery5.jpeg' },
+  { _id: 'p4', title: 'Promise of Forever', category: 'Engagement', url: '/images/gallery6.jpeg' },
+  { _id: 'p5', title: 'Sacred Union', category: 'Wedding', url: '/images/gallery7.jpeg' },
+  { _id: 'p6', title: 'Together Forever', category: 'Pre-Wedding', url: '/images/gallery8.jpg' },
+  { _id: 'p7', title: 'Grand Affair', category: 'Reception', url: '/images/gallery9.jpg' },
+  { _id: 'p8', title: 'Blissful Beginnings', category: 'Engagement', url: '/images/gallery10.jpg' },
+  { _id: 'p9', title: 'Bridal Elegance', category: 'Wedding', url: '/images/portfolio1.jpg' },
+  { _id: 'p10', title: 'Engagement Glow', category: 'Engagement', url: '/images/engagement.jpg' },
+  { _id: 'p11', title: 'Engagement Glow', category: 'Engagement', url: '/images/portfolio.jpeg' },
 
 ];
 
